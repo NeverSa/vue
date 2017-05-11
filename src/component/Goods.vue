@@ -1,46 +1,78 @@
 <template>
-  <div class="good">
-    <div class="menu-wrapper" ref="menuWrapper">
-      <ul>
-        <li v-for="(item, index) in goods" class="menu-item border-1px"  :class="{'current':currentIndex === index}"
-            @click="selectMenu(index, $event)">
+  <div>
+
+      <div class="header">
+        <div class="content-wrapper">
+          <div class="avatar">
+            <img width="64" height="64" src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg">
+          </div>
+          <div class="content">
+            <div class="title">
+              <span class="brand"></span>
+              <span class="name">粥品香坊（回龙观）</span>
+            </div>
+            <div class="description">
+              蜂鸟专送/38分钟送达
+            </div>
+            <div class="support">
+              <span class="icon decrease"></span>
+              <span class="text">在线支付满28减5</span>
+            </div>
+          </div>
+          <div class="support-count">
+            <span class="count">5个</span>
+            <i class="icon-keyboard_arrow_right"></i>
+          </div>
+        </div>
+
+        <div class="background">
+          <img width="100%" height="100%" src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg">
+        </div>
+    </div>
+    <div class="good">
+      <div class="menu-wrapper" ref="menuWrapper">
+        <ul>
+          <li v-for="(item, index) in goods" class="menu-item border-1px"  :class="{'current':currentIndex === index}"
+              @click="selectMenu(index, $event)">
           <span class="text">
            {{item.sallename}}
           </span>
-        </li>
-      </ul>
-    </div>
-    <div class="foods-wrapper" ref="foodWrapper">
-      <ul>
-        <li v-for="item in goods" class="food-list food-list-hook">
-          <h1 class="title">{{item.sallename}}</h1>
-          <ul>
-            <li v-for="food in item.item" class="food-item" @click="selectFood(food, $event)">
-              <div class="icon">
-                <img src="../../static/temp/4.jpg">
-              </div>
-              <div class="content">
-                <h2 class="name">{{food.dishesname}}</h2>
-                <p class="desc">{{food.description}}</p>
-                <div class="extra">
-                  <span class="count">月售{{food.sellCount}}</span><span class="count">好评{{food.rating}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="foods-wrapper" ref="foodWrapper">
+        <ul>
+          <li v-for="item in goods" class="food-list food-list-hook">
+            <h1 class="title">{{item.sallename}}</h1>
+            <ul>
+              <li v-for="food in item.item" class="food-item" @click="selectFood(food, $event)">
+                <div class="icon">
+                  <img src="../../static/temp/4.jpg">
                 </div>
-                <div class="price">
-                  <span class="now">￥{{food.price}}</span><span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
+                <div class="content">
+                  <h2 class="name">{{food.dishesname}}</h2>
+                  <p class="desc">{{food.description}}</p>
+                  <div class="extra">
+                    <span class="count">月售{{food.sellCount}}</span><span class="count">好评{{food.rating}}</span>
+                  </div>
+                  <div class="price">
+                    <span class="now">￥{{food.price}}</span><span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
+                  </div>
                 </div>
-              </div>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div>
 
+      </div>
     </div>
   </div>
+
 </template>
 
-<script>
+<script type="text/ecmascript-6">
   import BScroll from 'better-scroll';
 
   export default {
