@@ -1,0 +1,159 @@
+<template>
+  <div class="good">
+    <div class="menu-wrapper" ref="menuWrapper">
+      <ul>
+        <li v-for="(item, index) in goods" class="menu-item border-1px"  :class="{'current':currentIndex === index}"
+            @click="selectMenu(index, $event)">
+          <span class="text">
+           {{item.sallename}}
+          </span>
+        </li>
+      </ul>
+    </div>
+    <div class="foods-wrapper" ref="foodWrapper">
+      <ul>
+        <li v-for="item in goods" class="food-list food-list-hook">
+          <h1 class="title">{{item.sallename}}</h1>
+          <ul>
+            <li v-for="food in item.item" class="food-item" @click="selectFood(food, $event)">
+              <div class="icon">
+                <img src="../../static/temp/4.jpg">
+              </div>
+              <div class="content">
+                <h2 class="name">{{food.dishesname}}</h2>
+                <p class="desc">{{food.description}}</p>
+                <div class="extra">
+                  <span class="count">月售{{food.sellCount}}</span><span class="count">好评{{food.rating}}</span>
+                </div>
+                <div class="price">
+                  <span class="now">￥{{food.price}}</span><span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div>
+
+    </div>
+  </div>
+</template>
+
+<script>
+  import BScroll from 'better-scroll';
+
+  export default {
+    props: {
+      seller: {
+        type: Object
+      }
+    },
+    data () {
+      return {
+        goods: [],
+        listHeight: [],
+        scrolly: 0,
+        selectedFood: {}
+      };
+    },
+    created() {
+      this.$http.post("http://localhost:3000/api/goods/getlist").then(function (res) {
+        this.goods=res.body.Rows;
+        console.log(this.goods)
+        this.$nextTick(() => {
+          this._initScroll();
+          this._calculateHeight();
+        });
+      })
+
+      this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
+    },
+    mounted() {
+
+    },
+    computed: {
+      currentIndex() {
+        for (let i = 0; i < this.listHeight.length; i++) {
+          let height = this.listHeight[i];
+          let height2 = this.listHeight[i + 1];
+          if (!height2 || (this.scrolly >= height && this.scrolly < height2)) {
+            return i;
+          }
+        }
+        return 0;
+      },
+      selectFoods() {
+        let foods = [];
+        this.goods.forEach((good) => {
+          good.foods.forEach((food) => {
+            if (food.count) {
+              foods.push(food);
+            }
+          });
+        });
+        return foods;
+      }
+    },
+    methods: {
+      unique(data){
+        var res = [];
+        var json = {};
+        for(var i = 0; i < data.length; i++){
+          if(!json[data[i]]){
+            res.push(data[i]);
+            json[data[i]] = 1;
+          }
+        }
+        return res;
+      },
+      _initScroll() {
+        this.menuScroll = new BScroll(this.$refs.menuWrapper, {
+          click: true
+        });
+        this.foodScroll = new BScroll(this.$refs.foodWrapper, {
+          probeType: 3,
+          click: true
+        });
+        this.foodScroll.on('scroll', (pos) => {
+          this.scrolly = Math.abs(Math.round(pos.y));
+        });
+      },
+      _calculateHeight() {
+        let foodList = this.$refs.foodWrapper.getElementsByClassName('food-list-hook');
+        let height = 0;
+        this.listHeight.push(height);
+        for (let i = 0; i < foodList.length; i++) {
+          let item = foodList[i];
+          height += item.clientHeight;
+          this.listHeight.push(height);
+        }
+      },
+      selectMenu(index, event) {
+        if (!event._constructed) {
+          // 去掉自带click事件的点击
+          return;
+        }
+        let foodList = this.$refs.foodWrapper.getElementsByClassName('food-list-hook');
+        let el = foodList[index];
+        this.foodScroll.scrollToElement(el, 300);
+      },
+      selectFood(food, event) {
+        if (!event._constructed) {
+          return;
+        }
+       /* this.selectedFood = food;
+        this.$refs.food.show();*/
+      },
+      incrementTotal(target) {
+        this.$refs.shopCart.drop(target);
+      }
+    },
+    components: {
+
+    }
+  };
+</script>
+<style>
+
+</style>
