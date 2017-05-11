@@ -1,2 +1,6 @@
 # vue
-vue+node+less+express+mysql+angular
+此项目活综合运用vue-cli webback自动打包模块话开发
+淘宝flexible适配方案配合less实现自动换算rem单位
+服务器采用node express框架数据库采用mysql数据库
+
+后端管理系统待开发 采用angular
