@@ -12,6 +12,7 @@
   "dependencies": {
     "async": "^2.4.0",
     "better-scroll": "^0.1.15",
+    "body-parser": "^1.17.1",
     "cors": "^2.8.3",
     "mysql": "^2.13.0",
     "vue": "^2.2.2",
