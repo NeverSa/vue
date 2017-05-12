@@ -21,7 +21,7 @@ const router = new VueRouter({
         {path:'/nearby',component:nearby},
         {path:'/order',component:order},
         {path:'/perpersonalcenter',component:perpersonalcenter},
-        {path:'/goods',component:goods}
+        {path:'/goods/:orgid',component:goods}
     ]
 })
 

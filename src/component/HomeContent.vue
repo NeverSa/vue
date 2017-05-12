@@ -17,7 +17,8 @@
 
       <div class="Recommend">
         <div class="title">推荐商家</div>
-        <div class="row bor-bot">
+        <div class="row bor-bot" v-for="item in likedata">
+           <router-link :to="'/goods/'+item.shop_id">
           <div class="content">
             <div class="row">
               <div class="img">
@@ -25,21 +26,22 @@
               </div>
               <div class="detal">
                 <div class="row">
-                  <span class="tiger">品牌</span>
-                  <span class="name">台资味（杭州未来科技城店面）</span>
+                  <span class="tiger">{{item.shop_brand}}</span>
+                  <span class="name">{{item.shop_name}}</span>
                 </div>
                 <div class="row">
                   <span class="start">asdadad</span>
                   <span class="score">4.7</span>
                   <span class="copies">月销售500份</span>
-                  <span class="buluetiger fr">蜂鸟专送</span>
+                  <span class="buluetiger fr">{{item.shop_delivery}}</span>
                 </div>
                 <div class="row">
-                  <span class="rules">20起送|配送费￥4|￥23元/人</span>
+                  <span class="rules">{{item.shop_uptosend}}起送|配送费￥{{item.shop_deliveryprice}}</span>
                 </div>
               </div>
             </div>
           </div>
+           </router-link>
           <div class="activity">
             <div class="row">
               <div class="list fl">
@@ -51,76 +53,7 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="row bor-bot">
-          <div class="content">
-            <div class="row">
-              <div class="img">
-                <img src="../../static/temp/4.jpg"/>
-              </div>
-              <div class="detal">
-                <div class="row">
-                  <span class="tiger">品牌</span>
-                  <span class="name">台资味（杭州未来科技城店面）</span>
-                </div>
-                <div class="row">
-                  <span class="start">asdadad</span>
-                  <span class="score">4.7</span>
-                  <span class="copies">月销售500份</span>
-                  <span class="buluetiger fr">蜂鸟专送</span>
-                </div>
-                <div class="row">
-                  <span class="rules">20起送|配送费￥4|￥23元/人</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="activity">
-            <div class="row">
-              <div class="list fl">
-                <div ><span class="tag1 tag">新</span><span>新用户慢件</span></div>
-                <div ><span class="tag2 tag">新</span><span>新用户慢件</span></div>
-              </div>
-              <div class="more fl">
-                多个活动
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row bor-bot">
-          <div class="content">
-            <div class="row">
-              <div class="img">
-                <img src="../../static/temp/4.jpg"/>
-              </div>
-              <div class="detal">
-                <div class="row">
-                  <span class="tiger">品牌</span>
-                  <span class="name">台资味（杭州未来科技城店面）</span>
-                </div>
-                <div class="row">
-                  <span class="start">asdadad</span>
-                  <span class="score">4.7</span>
-                  <span class="copies">月销售500份</span>
-                  <span class="buluetiger fr">蜂鸟专送</span>
-                </div>
-                <div class="row">
-                  <span class="rules">20起送|配送费￥4|￥23元/人</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="activity">
-            <div class="row">
-              <div class="list fl">
-                <div ><span class="tag1 tag">新</span><span>新用户慢件</span></div>
-                <div ><span class="tag2 tag">新</span><span>新用户慢件</span></div>
-              </div>
-              <div class="more fl">
-                多个活动
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
 
@@ -129,7 +62,7 @@
 
 </template>
 
-<script>
+<script type="text/ecmascript-6">
     export default {
         name:"homecontent",
         data () {
@@ -142,9 +75,9 @@
         },
         methods: {
             Loadlikelist:function () {
-                this.$http.post("http://localhost:3000/api/getfoodlist").then(function (res) {
+                this.$http.post("http://localhost:3000/api/shop/getshoplist").then(function (res) {
                     this.likedata=res.body
-                  console.log(this.likedata)
+                     console.log(this.likedata)
                 })
             }
         }

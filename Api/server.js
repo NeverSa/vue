@@ -43,8 +43,16 @@ app.post('/api/goods/getlist',function (req, res, next) {
   })
 });
 //获取商家信息
-app.post('api/org/getorginfo',function (req,res) {
-
+app.post('/api/shop/getshoplist',function (req,res) {
+  console.log("222")
+  var sql="select * from sp_shop"
+  db.select(sql,function(err,data){
+    if(!err){
+      res.end(JSON.stringify(data));
+    }else{
+      res.end(JSON.stringify({code:"0"}))
+    }
+  })
 })
 //配置服务端口
 var server = app.listen(3000, function () {
