@@ -1,7 +1,6 @@
 <template>
   <div>
-
-      <div class="header">
+    <div class="header">
         <div class="content-wrapper">
           <div class="avatar">
             <img width="64" height="64" src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg">
@@ -12,16 +11,24 @@
               <span class="name">粥品香坊（回龙观）</span>
             </div>
             <div class="description">
-              蜂鸟专送/38分钟送达
+              <span class="buluetiger">蜂鸟专送</span>38分钟送达|配送费￥4
             </div>
             <div class="support">
-              <span class="icon decrease"></span>
               <span class="text">在线支付满28减5</span>
             </div>
           </div>
           <div class="support-count">
-            <span class="count">5个</span>
-            <i class="icon-keyboard_arrow_right"></i>
+            <div class="row"><span class="fr">4</span></div>
+            <ul>
+              <li>
+                <span class="tag1 tag" >新</span>
+                <span>新用户下单送</span>
+              </li>
+              <li>
+                <span class="tag2 tag" >新</span>
+                <span>新用户下单送</span>
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -29,7 +36,14 @@
           <img width="100%" height="100%" src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg">
         </div>
     </div>
-    <div class="good">
+    <div class="navtab">
+      <ul >
+        <li @click="selectactive(0)" :class="{'active':active==0}">商品</li>
+        <li @click="selectactive(1)" :class="{'active':active==1}">评价（4.7分）</li>
+        <div class="cf"></div>
+      </ul>
+    </div>
+    <div  class="good" v-show="active==0">
       <div class="menu-wrapper" ref="menuWrapper">
         <ul>
           <li v-for="(item, index) in goods" class="menu-item border-1px"  :class="{'current':currentIndex === index}"
@@ -68,13 +82,43 @@
 
       </div>
     </div>
+    <div v-show="active==1">
+      <div class="discuss row" >
+        <div class="score">
+          <span class="name">4.7</span><br/>
+          <span class="text">综合评分</span><br/>
+          <span class="percent">高于周边商家79.7%</span>
+        </div>
+        <div class="stars">
+          <div class="starsitem">
+            <span>服务态度</span>
+            <span>星星</span>
+            <span>分数</span>
+          </div>
+          <div class="starsitem">
+            <span>服务态度</span>
+            <span>星星</span>
+            <span>分数</span>
+          </div>
+          <div class="starsitem">
+            <span>送达时间</span>
+            <span class="text-title">45分钟</span>
+          </div>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <div class="targete">
+        <span>asdad</span>
+        <span>asdadad</span>
+      </div>
+    </div>
+
   </div>
 
 </template>
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll';
-
   export default {
     props: {
       seller: {
@@ -83,6 +127,7 @@
     },
     data () {
       return {
+        active:0,
         goods: [],
         listHeight: [],
         scrolly: 0,
@@ -90,18 +135,14 @@
       };
     },
     created() {
+      this._index=1;
       this.$http.post("http://localhost:3000/api/goods/getlist").then(function (res) {
         this.goods=res.body.Rows;
-        console.log(this.goods)
         this.$nextTick(() => {
           this._initScroll();
           this._calculateHeight();
         });
       })
-
-      this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
-    },
-    mounted() {
 
     },
     computed: {
@@ -128,17 +169,6 @@
       }
     },
     methods: {
-      unique(data){
-        var res = [];
-        var json = {};
-        for(var i = 0; i < data.length; i++){
-          if(!json[data[i]]){
-            res.push(data[i]);
-            json[data[i]] = 1;
-          }
-        }
-        return res;
-      },
       _initScroll() {
         this.menuScroll = new BScroll(this.$refs.menuWrapper, {
           click: true
@@ -179,6 +209,9 @@
       },
       incrementTotal(target) {
         this.$refs.shopCart.drop(target);
+      },
+      selectactive(index){
+       this.active=index
       }
     },
     components: {

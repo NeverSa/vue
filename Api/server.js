@@ -5,8 +5,6 @@ var express=require('express');
 var app =express();
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
-//暂时先用本地模拟数据
-var markdata=require("./module.json")
 //这里解决不同服务的跨域请求
 var cors=require("cors")
 app.use(cors())
@@ -14,7 +12,7 @@ var async=require('async');
 var db=require("../models/Conn")
 
 app.use(bodyParser.json());
-var markdata=require("./module.json")
+
 
 //获取猜你喜欢列表
 app.post('/api/getfoodlists',function (req, res, next) {
@@ -44,10 +42,11 @@ app.post('/api/goods/getlist',function (req, res, next) {
     }
   })
 });
+//获取商家信息
+app.post('api/org/getorginfo',function (req,res) {
 
+})
 //配置服务端口
 var server = app.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-  console.log('Example app listening at http://%s:%s', host, port);
+  console.log('Example app listening at');
 })

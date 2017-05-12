@@ -62,6 +62,9 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
 .text-black{
   color:@textcolor
 }
+.text-title{
+  color: @secendcolor;
+}
 .text-white{
   color:@whitetext;
 }
@@ -398,82 +401,6 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
   }
 }
 //商家商品页
-.goods{
-  position: absolute;
-  top:120/@r;
-  bottom: 45/@r;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  .tabnav{
-    .active{
-      border-bottom: 2px solid @bulecolor;
-      color:@bulecolor ;
-    }
-    li{
-      color: @blacktext;
-      line-height: 40/@r;
-      width: 50%;
-      height: 40/@r;
-      border-bottom: 1px solid @bordercolor;
-      cursor:pointer;
-      .fl;
-      .center;
-    }
-  }
-  .meun-warpper{
-    width: 70/@r;
-    .fl;
-    li{
-      .center;
-      height: 50/@r;
-      line-height: 50/@r;
-      width: 70/@r;
-      border-bottom: 1px solid @bordercolor;
-      span{ vertical-align: middle;}
-    }
-  }
-  .foods-warpper{
-    width: (320-70)/@r;
-    .fl;
-    .food-item{
-      border-bottom: 1px solid @bordercolor;
-      .foodimg{
-        margin: 10/@r;
-        .img{
-          .fl;
-          img{width: 50/@r;height: 50/@r}
-        }
-        .detal{
-          padding-left: 5/@r;
-          width: 180/@r;
-          .fl;
-          .name{
-            color:@blacktext;
-          }
-          .discuss{
-            color: @secendcolor;
-          }
-          .price{
-            color:@yellowtext;
-            font-size: 34px;
-          }
-          .cart{
-            .fr;
-          }
-        }
-      }
-    }
-    .type{
-      font-size: 30px;
-      display: block;
-      border-left: 2/@r solid @bordercolor;
-      font-weight: 900;
-      padding-left:5/@r ;
-    }
-  }
-}
-
 
 //推荐商家
 .Recommend{
@@ -547,11 +474,53 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
     }
   }
 }
+
+
+//头部商家信息
+.header{
+  position:relative;
+  overflow:hidden;
+  color: @whitetext;
+  background:rgba(7,17,27,0.5);
+  .content-wrapper{
+    position: relative;
+    z-index: 2;
+    padding: 15/@r 10/@r 10/@r/@1080 10/@r;
+    .avatar{
+      display: inline-block;
+      vertical-align: top;
+    }
+    .content{
+      display: inline-block;
+      margin-left: 16px;
+      .title{
+        margin: 2px 0 8px 0;
+        .name{
+          font-size: 14px;
+        }
+      }
+      .description{
+        .buluetiger{margin-right: 25/@r/@1080}
+      }
+      .support{ margin-top: 30/@r/@1080}
+    }
+  }
+  .background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+  }
+}
+//商品列表
 .good{
   display:flex;
   position :absolute;
   width: 100%;
-  top :174px;
+  top :580/@r/@1080;
   bottom: 46px;
   overflow: hidden;
   .menu-wrapper{
@@ -562,7 +531,7 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
       display :table;
       height: 165/@r/@1080;
       width: 100%;
-     .center;
+      .center;
       .text{
         display: table-cell;
         vertical-align: middle;
@@ -622,36 +591,56 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
     }
   }
 }
+//商品tab
+.navtab{
+  li{
+    .fl;
+    .center;
+    width: 50%;
+    height: 140/@r/@1080;
+    line-height: 140/@r/@1080;
+    border-bottom: 1px solid @bordercolor;
+  }
+  .active{
+    border-bottom: 2px solid @bulecolor;
+    color: @bulecolor;
+  }
+}
 
-//头部商家信息
-.header{
-  position:relative;
-  overflow:hidden;
-  color: @whitetext;
-  background:rgba(7,17,27,0.5);
-  .content-wrapper{
-    position: relative;
-    z-index: 2;
-    padding: 24px 12px 18px 24px;
-    .avatar{
-      display: inline-block;
-      vertical-align: top;
+//商家评价
+.discuss{
+  border-bottom: 1px solid @bordercolor;
+  padding: 45/@r/@1080 0;
+  .score{
+    .center;
+    .fl;
+     width: 385/@r/@1080;
+    border-right: 1px solid @bordercolor;
+    .name{
+      font-size: 30px;
+      color: @yellowtext;
     }
-    .content{
-      display: inline-block;
-      margin-left: 16px;
-      .title{
-        margin: 2px 0 8px 0;
-      }
+    .text{
+      color: @titlecolor;
+      line-height: 30px;
+    }
+    .percent{
+      color: @secendcolor;
+    }
+
+  }
+  .stars{
+    .fl;
+    padding: 0 100/@r/@1080;
+    .center;
+    .starsitem{
+      height: 110/@r/@1080;
+      clear: both;
     }
   }
-  .background{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    -webkit-filter: blur(10px);
-    filter: blur(10px);
-  }
+
+}
+.targete{
+  border-bottom: 1px dashed @bordercolor;
+  padding: 20px;
 }
