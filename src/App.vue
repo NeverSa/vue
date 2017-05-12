@@ -7,10 +7,10 @@
         </div>
         <div class="footer">
             <ul>
-                <li><router-link to="home"><i class="icon iconfont icon-waimai"></i><br/>外卖</router-link></li>
-                <li><router-link to="nearby"><i class="icon iconfont icon-faxian"></i><br/>发现</router-link></li>
-                <li><router-link to="order"><i class="icon iconfont icon-dingdan"></i><br/>订单</router-link></li>
-                <li><router-link to="perpersonalcenter"><i class="icon iconfont icon-wo"></i><br/>我的</router-link></li>
+                <li><router-link to="/home"><i class="icon iconfont icon-waimai"></i><br/>外卖</router-link></li>
+                <li><router-link to="/nearby"><i class="icon iconfont icon-faxian"></i><br/>发现</router-link></li>
+                <li><router-link to="/order"><i class="icon iconfont icon-dingdan"></i><br/>订单</router-link></li>
+                <li><router-link to="/perpersonalcenter"><i class="icon iconfont icon-wo"></i><br/>我的</router-link></li>
             </ul>
         </div>
     </div>

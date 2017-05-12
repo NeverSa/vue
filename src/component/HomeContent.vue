@@ -18,7 +18,7 @@
       <div class="Recommend">
         <div class="title">推荐商家</div>
         <div class="row bor-bot" v-for="item in likedata">
-           <router-link :to="'/goods/'+item.shop_id">
+           <router-link :to="'goods/'+item.shop_id">
           <div class="content">
             <div class="row">
               <div class="img">

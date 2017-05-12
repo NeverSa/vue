@@ -120,6 +120,7 @@
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll';
   export default {
+    name:"goods",
     props: {
       seller: {
         type: Object
@@ -136,7 +137,6 @@
     },
     created() {
       this._index=1;
-      console.log(this.$route.params.orgid)
       this.$http.post("http://localhost:3000/api/goods/getlist").then(function (res) {
         this.goods=res.body.Rows;
         this.$nextTick(() => {
