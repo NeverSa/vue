@@ -44,7 +44,7 @@ app.post('/api/goods/getlist',function (req, res, next) {
 });
 //获取商家信息
 app.post('/api/shop/getshoplist',function (req,res) {
-  var sql="select * from sp_shop"
+  var sql="select * from sp_shop left join sp_code on sp_shop.shop_id=sp_code.shop_id"
   db.select(sql,function(err,data){
     if(!err){
       res.end(JSON.stringify(data));

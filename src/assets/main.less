@@ -427,7 +427,7 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
     }
     .detal{
       height: 180/@r/@1080;
-      width:750/@r/@1080; ;
+      width:750/@r/@1080;
       .fl;
       border-bottom: 1/@r/@1080 dashed @bordercolor;
       padding-bottom: 45@r/ @1080;
@@ -463,7 +463,6 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
       .rules{
         color:@secendcolor;
         margin-top: 25/@r/@1080;
-        display: block;
       }
     }
   }
@@ -643,4 +642,28 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
 .targete{
   border-bottom: 1px dashed @bordercolor;
   padding: 20px;
+}
+
+//星星组件
+.stars{
+  display: inline-block;
+  position: relative;
+  width: 230/@r/@1080;
+  height: 20/@r/@1080;
+  margin-top: -3px;
+  vertical-align: top;
+  .yellow{
+    width: 16px;
+    position: absolute;
+    color: @yellowtext;
+    z-index: 4;
+    overflow: hidden;
+
+  }
+  .gray{
+    width: 16px;
+    position: absolute;
+    color: @secendcolor;
+    z-index: 3;
+  }
 }

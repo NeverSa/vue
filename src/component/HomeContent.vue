@@ -26,12 +26,12 @@
               </div>
               <div class="detal">
                 <div class="row">
-                  <span class="tiger">{{item.shop_brand}}</span>
+                  <span class="tiger">{{item.fieldname}}</span>
                   <span class="name">{{item.shop_name}}</span>
                 </div>
                 <div class="row">
-                  <span class="start">asdadad</span>
-                  <span class="score">4.7</span>
+                    <Vstars :score="item.shop_score" ></Vstars>
+                    <span class="score">{{item.shop_score}}</span>
                   <span class="copies">月销售500份</span>
                   <span class="buluetiger fr">{{item.shop_delivery}}</span>
                 </div>
@@ -63,8 +63,10 @@
 </template>
 
 <script type="text/ecmascript-6">
+    import Vstars from "./Stars.vue"
     export default {
         name:"homecontent",
+        components:{Vstars:Vstars},
         data () {
             return {
                 likedata:[]
@@ -77,7 +79,6 @@
             Loadlikelist:function () {
                 this.$http.post("http://localhost:3000/api/shop/getshoplist").then(function (res) {
                     this.likedata=res.body
-                     console.log(this.likedata)
                 })
             }
         }
