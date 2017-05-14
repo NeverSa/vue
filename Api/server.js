@@ -23,13 +23,15 @@ app.post('/api/getfoodlists',function (req, res, next) {
 });
 //获取商品列表
 app.post('/api/goods/getlist',function (req, res, next) {
-  let Result={"Rows":[]}
-  let sql="SELECT `saletype`,`sallename` FROM `sp_sale` group by `saletype`";
+  let id=req.body.id;
+  let Result={"Rows":[]};
+  let sql=`SELECT dishes_type,shop_id FROM sp_dishes where shop_id=${id} group by dishes_type`;
   db.select(sql,function (err,data) {
+      console.log(data)
     if(!err){
       let _index=0
       async.map(data,function(item,callback) {
-        let sql = `SELECT dishesname,id,likeexponent,price FROM sp_sale where saletype=${item.saletype}.`
+        let sql = `SELECT dishes_type as type, dishes_name as name,id,dishes_img as img,dishes_price as price FROM sp_dishes where dishes_type=\'${item.dishes_type}\'`
         Result.Rows.push(item)
         db.select(sql, function (err, data) {
           Result.Rows[_index].item = data
@@ -37,11 +39,24 @@ app.post('/api/goods/getlist',function (req, res, next) {
           callback(null, Result);
         })
       },function(err,results) {
+          console.log(Result)
         res.end(JSON.stringify(Result));
       });
     }
   })
 });
+//获取单个商家信息
+app.post("/api/shop/getoneshop",function(req,res){
+ let id=req.body.id;
+ let sql =`select * from sp_shop where shop_id=${id}.`
+  db.select(sql,function(err,data){
+   if(!err){
+     res.send(JSON.stringify(data))
+   }else{
+     res.end(JSON.stringify({code:"0"}))
+   }
+  })
+})
 //获取商家信息
 app.post('/api/shop/getshoplist',function (req,res) {
   var sql="select * from sp_shop"
@@ -58,7 +73,6 @@ app.post('/api/shop/getshoplist',function (req,res) {
 //获取商家活动信息
 app.post("/api/shop/getactivity",function(req,res){
   let shopid=req.body.id;
-  console.log(shopid)
    let sql=`SELECT activity_tag as tag,activity_des as des FROM sp_activity where shop_id=${shopid}.`;
   db.select(sql,function(err,data){
      if(!err){

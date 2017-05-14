@@ -8,28 +8,16 @@
           <div class="content">
             <div class="title">
               <span class="brand"></span>
-              <span class="name">粥品香坊（回龙观）</span>
-            </div>
+                <span class="name">{{shopdes.shop_name}}</span>
+            </div>    
             <div class="description">
-              <span class="buluetiger">蜂鸟专送</span>38分钟送达|配送费￥4
+              <span class="buluetiger">{{shopdes.shop_delivery}}</span>38分钟送达|配送费￥{{shopdes.shop_uptosend}}
             </div>
             <div class="support">
               <span class="text">在线支付满28减5</span>
             </div>
           </div>
-          <div class="support-count">
-            <div class="row"><span class="fr">4</span></div>
-            <ul>
-              <li>
-                <span class="tag1 tag" >新</span>
-                <span>新用户下单送</span>
-              </li>
-              <li>
-                <span class="tag2 tag" >新</span>
-                <span>新用户下单送</span>
-              </li>
-            </ul>
-          </div>
+          <Vactivity :shopid="shopid"></Vactivity>
         </div>
 
         <div class="background">
@@ -49,7 +37,7 @@
           <li v-for="(item, index) in goods" class="menu-item border-1px"  :class="{'current':currentIndex === index}"
               @click="selectMenu(index, $event)">
           <span class="text">
-           {{item.sallename}}
+           {{item.dishes_type}}
           </span>
           </li>
         </ul>
@@ -57,20 +45,20 @@
       <div class="foods-wrapper" ref="foodWrapper">
         <ul>
           <li v-for="item in goods" class="food-list food-list-hook">
-            <h1 class="title">{{item.sallename}}</h1>
+            <h1 class="title">{{item.dishes_type}}</h1>
             <ul>
               <li v-for="food in item.item" class="food-item" @click="selectFood(food, $event)">
                 <div class="icon">
                   <img src="../../static/temp/4.jpg">
                 </div>
                 <div class="content">
-                  <h2 class="name">{{food.dishesname}}</h2>
+                  <h2 class="name">{{food.name}}</h2>
                   <p class="desc">{{food.description}}</p>
                   <div class="extra">
-                    <span class="count">月售{{food.sellCount}}</span><span class="count">好评{{food.rating}}</span>
+                    <span class="count">月售52份</span>
                   </div>
                   <div class="price">
-                    <span class="now">￥{{food.price}}</span><span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
+                    <span class="now">￥{{food.price}}</span>
                   </div>
                 </div>
               </li>
@@ -119,6 +107,7 @@
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll';
+  import Vactivity from "./Activity.vue"
   export default {
     name:"goods",
     props: {
@@ -128,6 +117,8 @@
     },
     data () {
       return {
+        shopid:"",
+        shopdes:[],
         active:0,
         goods: [],
         listHeight: [],
@@ -136,9 +127,12 @@
       };
     },
     created() {
+     this.shopid=this.$route.params.orgid;
+    this.loadshopdes()
       this._index=1;
-      this.$http.post("http://localhost:3000/api/goods/getlist").then(function (res) {
+      this.$http.post("http://localhost:3000/api/goods/getlist",{id:this.shopid}).then(function (res) {
         this.goods=res.body.Rows;
+        console.log(this.goods)
         this.$nextTick(() => {
           this._initScroll();
           this._calculateHeight();
@@ -170,6 +164,12 @@
       }
     },
     methods: {
+      //获取头部商家信息
+      loadshopdes(){
+        this.$http.post("http://localhost:3000/api/shop/getoneshop",{id:this.shopid}).then((res)=>{
+         this.shopdes=res.body[0]
+        })
+      },
       _initScroll() {
         this.menuScroll = new BScroll(this.$refs.menuWrapper, {
           click: true
@@ -216,7 +216,7 @@
       }
     },
     components: {
-
+      Vactivity:Vactivity
     }
   };
 </script>

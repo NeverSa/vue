@@ -15,9 +15,10 @@ function SelectModel(user){
 }
 
 SelectModel.select = function(selectSql,callback){
+  console.log(selectSql)
   connection.query(selectSql,function(err,res){
     if(err){
-      console.log('Login err:' + err) ;
+      console.log(err) ;
       return ;
     }
     console.log('Get name success') ;
