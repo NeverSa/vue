@@ -26,7 +26,7 @@
               </div>
               <div class="detal">
                 <div class="row">
-                  <span class="tiger">{{item.fieldname}}</span>
+                  <span class="tiger">{{item.shop_brand}}</span>
                   <span class="name">{{item.shop_name}}</span>
                 </div>
                 <div class="row">
@@ -42,17 +42,7 @@
             </div>
           </div>
            </router-link>
-          <div class="activity">
-            <div class="row">
-              <div class="list fl">
-                <div ><span class="tag1 tag">新</span><span>新用户慢件</span></div>
-                <div ><span class="tag2 tag">新</span><span>新用户慢件</span></div>
-              </div>
-              <div class="more fl">
-                多个活动
-              </div>
-            </div>
-          </div>
+           <Vactivity :shopid="item.shop_id"></Vactivity>
 
         </div>
       </div>
@@ -64,9 +54,10 @@
 
 <script type="text/ecmascript-6">
     import Vstars from "./Stars.vue"
+    import Vactivity from "./Activity.vue"
     export default {
         name:"homecontent",
-        components:{Vstars:Vstars},
+        components:{Vstars:Vstars,Vactivity:Vactivity},
         data () {
             return {
                 likedata:[]

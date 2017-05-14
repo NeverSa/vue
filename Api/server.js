@@ -44,14 +44,29 @@ app.post('/api/goods/getlist',function (req, res, next) {
 });
 //获取商家信息
 app.post('/api/shop/getshoplist',function (req,res) {
-  var sql="select * from sp_shop left join sp_code on sp_shop.shop_id=sp_code.shop_id"
+  var sql="select * from sp_shop"
   db.select(sql,function(err,data){
     if(!err){
+      console.log(data)
       res.end(JSON.stringify(data));
     }else{
       res.end(JSON.stringify({code:"0"}))
     }
   })
+});
+
+//获取商家活动信息
+app.post("/api/shop/getactivity",function(req,res){
+  let shopid=req.body.id;
+  console.log(shopid)
+   let sql=`SELECT activity_tag as tag,activity_des as des FROM sp_activity where shop_id=${shopid}.`;
+  db.select(sql,function(err,data){
+     if(!err){
+       res.send(JSON.stringify(data))
+     }
+
+  })
+
 })
 //配置服务端口
 var server = app.listen(3000, function () {
