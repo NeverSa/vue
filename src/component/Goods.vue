@@ -9,7 +9,7 @@
             <div class="title">
               <span class="brand"></span>
                 <span class="name">{{shopdes.shop_name}}</span>
-            </div>    
+            </div>
             <div class="description">
               <span class="buluetiger">{{shopdes.shop_delivery}}</span>38分钟送达|配送费￥{{shopdes.shop_uptosend}}
             </div>
