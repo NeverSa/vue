@@ -104,6 +104,14 @@
         <span>送货快（183）</span>
         <span >分量足（252）</span>
       </div>
+      <div class="commentcontent">
+           <div class="title">
+             <i class="iconfont icon-xingxing "></i>只看有内容评价
+           </div>
+        <div class="content">
+          <img src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg"/>
+        </div>
+      </div>
     </div>
 
   </div>
