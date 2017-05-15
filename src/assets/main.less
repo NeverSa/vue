@@ -28,7 +28,7 @@
   background: #2395ff;
   color: @whitetext;
   border-radius: 5px;
-  line-height:45@r/ @1080;
+  line-height:45/@r/ @1080;
 }
 .tag{
   text-align: center;
@@ -98,7 +98,7 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
   bottom:0;
   li{
     i{
-      font-size:36px;
+      font-size:18px;
     }
     line-height: inherit;
     width: 320/4/@r;
@@ -470,6 +470,32 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
 
 }
 
+//星星组件
+.stars{
+  display: inline-block;
+  position: relative;
+  width: 230/@r/@1080;
+  height: 20/@r/@1080;
+  margin-top: -3px;
+  vertical-align: top;
+  .yellow{
+    width: 16px;
+    position: absolute;
+    color: @yellowtext;
+    z-index: 4;
+    overflow: hidden;
+    font-size: 12px;
+
+  }
+  .gray{
+    width: 16px;
+    position: absolute;
+    color: @secendcolor;
+    z-index: 3;
+    font-size: 12px;
+  }
+}
+//商家活动组件
 .activity{
   padding:20/@r/@1080  0 20/@r/@1080 240/@r/@1080;
   .list{
@@ -634,42 +660,39 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
     }
 
   }
-  .stars{
-    .fl;
-    padding: 0 100/@r/@1080;
-    .center;
+  .starscontent{
+    height: 300/@r/@1080;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     .starsitem{
-      height: 110/@r/@1080;
-      clear: both;
+      width: 500/@r/@1080;
     }
   }
-
 }
 .targete{
   border-bottom: 1px dashed @bordercolor;
-  padding: 20px;
-}
-
-//星星组件
-.stars{
-  display: inline-block;
-  position: relative;
-  width: 230/@r/@1080;
-  height: 20/@r/@1080;
-  margin-top: -3px;
-  vertical-align: top;
-  .yellow{
-    width: 16px;
-    position: absolute;
-    color: @yellowtext;
-    z-index: 4;
-    overflow: hidden;
-
+  display: flex;
+  flex-wrap: wrap ;
+  justify-content:space-around;
+  padding: 15/@r/@1080 0;
+  .active{
+    background-color:@bulecolor ;
+    color: @whitetext;
   }
-  .gray{
-    width: 16px;
-    position: absolute;
-    color: @secendcolor;
-    z-index: 3;
+  span{
+    border-radius: 5px;
+    padding: 0 20/@r/@1080;
+    margin: 10/@r/@1080;
+   display: inline-block;
+    height: 86/@r/@1080;
+    background-color: #ebf5ff;
+    line-height:86/@r/@1080;
+    .center;
   }
 }
+
+//评论内容
+
+

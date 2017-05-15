@@ -27,7 +27,6 @@ app.post('/api/goods/getlist',function (req, res, next) {
   let Result={"Rows":[]};
   let sql=`SELECT dishes_type,shop_id FROM sp_dishes where shop_id=${id} group by dishes_type`;
   db.select(sql,function (err,data) {
-      console.log(data)
     if(!err){
       let _index=0
       async.map(data,function(item,callback) {
@@ -39,7 +38,6 @@ app.post('/api/goods/getlist',function (req, res, next) {
           callback(null, Result);
         })
       },function(err,results) {
-          console.log(Result)
         res.end(JSON.stringify(Result));
       });
     }
@@ -62,7 +60,6 @@ app.post('/api/shop/getshoplist',function (req,res) {
   var sql="select * from sp_shop"
   db.select(sql,function(err,data){
     if(!err){
-      console.log(data)
       res.end(JSON.stringify(data));
     }else{
       res.end(JSON.stringify({code:"0"}))

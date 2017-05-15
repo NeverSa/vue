@@ -2,14 +2,14 @@
     <div class="homecontent">
         <div >
             <ul>
-                <li><a><i class=" iconfont icon-weibiaoti-1-01 ionic_1"></i><br/>美食</a></li>
-                <li><a><i class="iconfont icon-tianpin ionic_2"></i><br/>甜品饮品</a></li>
-                <li><a><i class="iconfont icon-shangdian ionic_3"></i><br/>超商便利</a></li>
-                <li><a><i class="iconfont icon-zaocan ionic_4"></i><br/>预定早餐</a></li>
-                <li><a><i class="iconfont icon-shucai ionic_5"></i><br/>果蔬生鲜</a></li>
-                <li><a><i class="iconfont icon-weibiaoti-zhuanhuan ionic_6"></i><br/>新店特惠</a></li>
-                <li><a><i class="iconfont icon-songhuo ionic_7"></i><br/>准时达</a></li>
-                <li><a><i class="iconfont icon-canyin ionic_8"></i><br/>简餐</a></li>
+                <li><a><i class=" iconfont icon-meishi ionic_1"></i><br/>美食</a></li>
+                <li><a><i class="iconfont icon-tehui ionic_2"></i><br/>甜品饮品</a></li>
+                <li><a><i class="iconfont icon-market ionic_3"></i><br/>超商便利</a></li>
+                <li><a><i class="iconfont icon-cantingyuding ionic_4"></i><br/>预定早餐</a></li>
+                <li><a><i class="iconfont icon-xgss ionic_5"></i><br/>果蔬生鲜</a></li>
+                <li><a><i class="iconfont icon-tehui ionic_6"></i><br/>新店特惠</a></li>
+                <li><a><i class="iconfont icon-icon4 ionic_7"></i><br/>准时达</a></li>
+                <li><a><i class="iconfont icon-diancan ionic_8"></i><br/>简餐</a></li>
                 <div class="cf"></div>
             </ul>
         </div>

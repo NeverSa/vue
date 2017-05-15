@@ -77,16 +77,16 @@
           <span class="text">综合评分</span><br/>
           <span class="percent">高于周边商家79.7%</span>
         </div>
-        <div class="stars">
+        <div class="starscontent">
           <div class="starsitem">
             <span>服务态度</span>
-            <span>星星</span>
-            <span>分数</span>
+            <span><Vstars :score="3.8"></Vstars></span>
+            <span class="text-yellow">3.8分</span>
           </div>
           <div class="starsitem">
             <span>服务态度</span>
-            <span>星星</span>
-            <span>分数</span>
+            <span><Vstars :score="5"></Vstars></span>
+            <span class="text-yellow">5分</span>
           </div>
           <div class="starsitem">
             <span>送达时间</span>
@@ -96,8 +96,13 @@
       </div>
       <div class="hr"></div>
       <div class="targete">
-        <span>asdad</span>
-        <span>asdadad</span>
+        <span  class="active">全部（252）</span>
+        <span>满意（123）</span>
+        <span >不满意（52）</span>
+        <span>有图（22）</span>
+        <span >味道好（33）</span>
+        <span>送货快（183）</span>
+        <span >分量足（252）</span>
       </div>
     </div>
 
@@ -108,6 +113,7 @@
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll';
   import Vactivity from "./Activity.vue"
+  import Vstars from "./Stars.vue"
   export default {
     name:"goods",
     props: {
@@ -132,7 +138,6 @@
       this._index=1;
       this.$http.post("http://localhost:3000/api/goods/getlist",{id:this.shopid}).then(function (res) {
         this.goods=res.body.Rows;
-        console.log(this.goods)
         this.$nextTick(() => {
           this._initScroll();
           this._calculateHeight();
@@ -216,7 +221,7 @@
       }
     },
     components: {
-      Vactivity:Vactivity
+      Vactivity:Vactivity,Vstars:Vstars
     }
   };
 </script>
