@@ -79,6 +79,26 @@ app.post("/api/shop/getactivity",function(req,res){
   })
 
 })
+
+//登录接口
+app.post("/api/user/login",function(req,res){
+   let username=req.body.username;
+    let password=req.body.password;
+    var sql=`SELECT * FROM sp_user WHERE loginname=\'${username}\' AND password=\'${password}\'`
+    db.select(sql,function(err,data){
+        console.log(data)
+       if(!err){
+           if(data.length==0){
+               console.log("a")
+               res.send(JSON.stringify({"success":false}))
+           }else{
+               res.send(JSON.stringify({"success":true}))
+           }
+       }else{
+           res.send(JSON.stringify({"success":false}))
+       }
+    })
+})
 //配置服务端口
 var server = app.listen(3000, function () {
   console.log('Example app listening at');

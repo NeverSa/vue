@@ -78,7 +78,7 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
   color:@greentext
 }
 .text-bulue{
-  color: @buluetext;
+  color: @bulecolor;
 }
 .fl{
   float: left;
@@ -694,5 +694,67 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
 }
 
 //评论内容
+.estimate{
+  display: flex;
+  flex-direction: column;
+  .title{
+    padding-left: 45/@r/@1080;
+    height: 85/@r/@1080;
+    line-height:85/@r/@1080 ;
+    border-bottom: 1px solid @bordercolor;
+  }
+  .content{
+    display: flex;
+    flex-direction: row;
+    padding: 50/@r/@1080;
+    border-bottom: 1px solid @bordercolor;
+    .imgcontent{
+      width: 160/@r/@1080;
+      height:160/@r/@1080;
+      img{width: 100%;height: 100%;display: inline-block;border-radius: 50%}
+    }
+    .des{
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      .item{
+        margin-top:15/@r/@1080;
+        span{padding-right: 20/@r/@1080;display: inline-block}
+       margin-left:30/@r/@1080 ;
+        .name{ color: @blacktext};
+        .data{color: @secendcolor};
+        .headline{color:@titlecolor}
+      }
+    }
+  }
+}
 
+//登录页
+.login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ .item{
+   margin: 30/@r/@1080;
+   .center;
+   input,button{
+     font-size: 12px;
+     width: 500/@r/@1080;
+     padding: 12/@r/@1080;
+     height: 80/@r/@1080;
+     line-height: 80/@r/@1080;
+     color: #333;
+     border: 1px solid #dadada;
+   }
+   a{
+     background: #32a5e7;
+     color: #fff;
+     display: inline-block; font-size: 12px;
+     width: 500/@r/@1080;
+     padding: 12/@r/@1080;
+     height: 80/@r/@1080;
+     line-height: 80/@r/@1080;
+   }
+ }
+}
 
