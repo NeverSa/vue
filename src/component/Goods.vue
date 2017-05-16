@@ -34,7 +34,7 @@
     <div  class="good" v-show="active==0">
       <div class="menu-wrapper" ref="menuWrapper">
         <ul>
-          <li v-for="(item, index) in goods" class="menu-item border-1px"  :class="{'current':currentIndex === index}"
+          <li v-for="(item, index) in goods" class="menu-item"  :class="{'current':currentIndex === index}"
               @click="selectMenu(index, $event)">
           <span class="text">
            {{item.dishes_type}}
@@ -59,6 +59,13 @@
                   </div>
                   <div class="price">
                     <span class="now">￥{{food.price}}</span>
+                    <span class="fr">
+                     <div class="caroption">
+                        <a @click="add(-1)"><i>-</i></a>
+                        <span>22</span>
+                        <a @click="add(1)"><i>+</i></a>
+                    </div>
+                    </span>
                   </div>
                 </div>
               </li>
@@ -148,7 +155,7 @@
         </div>
       </div>
     </div>
-
+   <Vshopcart ></Vshopcart>
   </div>
 
 </template>
@@ -157,29 +164,29 @@
   import BScroll from 'better-scroll';
   import Vactivity from "./Activity.vue"
   import Vstars from "./Stars.vue"
+  import Vshopcart from "./ShopCart.vue"
+  import Vcaroption from "./CartOption.vue"
   export default {
     name:"goods",
     props: {
-      seller: {
-        type: Object
-      }
+
     },
     data () {
       return {
-        shopid:"",
         shopdes:[],
         active:0,
         goods: [],
         listHeight: [],
         scrolly: 0,
-        selectedFood: {}
+        selectfood:[]
       };
     },
     created() {
-     this.shopid=this.$route.params.orgid;
-    this.loadshopdes()
+      this.$store.state.neednav = false;
+      this.shopid=this.$route.params.orgid;
+      this.loadshopdes()
       this._index=1;
-      this.$http.post("http://localhost:3000/api/goods/getlist",{id:this.shopid}).then(function (res) {
+      this.$http.post(this.$store.state.IP+"/api/goods/getlist",{id:this.shopid}).then(function (res) {
         this.goods=res.body.Rows;
         this.$nextTick(() => {
           this._initScroll();
@@ -212,6 +219,16 @@
       }
     },
     methods: {
+      add(cont){
+        if(this.selectfood.length==0){
+          this.selectfood.push()
+        }
+        this.selectfood.forEach(function (item,index) {
+
+        })
+        //for(var i in this.selectfood)
+        alert(cont)
+      },
       //获取头部商家信息
       loadshopdes(){
         this.$http.post("http://localhost:3000/api/shop/getoneshop",{id:this.shopid}).then((res)=>{
@@ -264,7 +281,10 @@
       }
     },
     components: {
-      Vactivity:Vactivity,Vstars:Vstars
+      Vactivity:Vactivity,
+      Vstars:Vstars,
+      Vshopcart:Vshopcart,
+      Vcaroption:Vcaroption
     }
   };
 </script>

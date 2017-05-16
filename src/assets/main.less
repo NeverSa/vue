@@ -758,3 +758,48 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
  }
 }
 
+//购物车
+.shopcart{
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  height: 150/@r/@1080;
+  background: @blacktext;
+  opacity: 0.6;
+  bottom: 0;
+  width: 100%;
+
+  color: @whitetext;
+  .carionic{
+    width: 220/@r/@1080;
+    background: #454547;
+    .center;
+    .car{
+      color: #5f5f63;
+      display: inline-block;
+      width: 150/@r/@1080;
+      height: 150/@r/@1080;
+      border-radius: 50%;
+      background: @blacktext;
+      margin-top: -15px;
+      border:5px solid #454547;
+      box-shadow: 0 0 10px rgba(0, 17, 17, .5);
+      i{
+        font-size: 28px !important;
+        margin-top: -15px;
+      }
+    }
+  }
+  .content{
+    flex:1;
+    padding-left: 30/@r/@1080;
+    line-height:150/@r/@1080 ;
+  }
+  .option{
+    width: 235/@r/@1080;
+    background: #535356;
+    text-align: center;
+    line-height:150/@r/@1080 ;
+  }
+}
+

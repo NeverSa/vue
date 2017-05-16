@@ -5,7 +5,7 @@
                 <router-view></router-view>
             </transition>
         </div>
-        <div class="footer">
+        <div class="footer" v-show="$store.state.neednav">
             <ul>
                 <li><router-link to="/home"><i class="icon iconfont icon-waimai"></i><br/>外卖</router-link></li>
                 <li><router-link to="/nearby"><i class="icon iconfont icon-faxian"></i><br/>发现</router-link></li>
