@@ -104,12 +104,47 @@
         <span>送货快（183）</span>
         <span >分量足（252）</span>
       </div>
-      <div class="commentcontent">
-           <div class="title">
-             <i class="iconfont icon-xingxing "></i>只看有内容评价
-           </div>
+      <div class="estimate">
+        <div class="title">只看有内容的评价</div>
         <div class="content">
-          <img src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg"/>
+          <div class="imgcontent"><img src="../../static/temp/4.jpg"/> </div>
+          <div class="des">
+            <div class="item">
+              <span class="name">小****手术</span><span class="data">2017-02-03</span>
+            </div>
+            <div class="item">
+              <span class="headline">商家服务：</span>
+              <span><i class="iconfont icon-xingxing "></i>非常满意|</span>
+              <span class="headline">商品：</span>
+              <span><i class="iconfont icon-xingxing "></i>非常满意</span>
+            </div>
+            <div class="item">
+              <span class="text-bulue">阿萨德看了看:</span><span>非常好吃</span>
+            </div>
+            <div class="item">
+              <span class="text-bulue">阿萨德看了看:</span><span>非常好吃</span>
+            </div>
+          </div>
+        </div>
+        <div class="content">
+          <div class="imgcontent"><img src="../../static/temp/4.jpg"/> </div>
+          <div class="des">
+            <div class="item">
+              <span class="name">小****手术</span><span class="data">2017-02-03</span>
+            </div>
+            <div class="item">
+              <span class="headline">商家服务：</span>
+              <span><i class="iconfont icon-xingxing "></i>非常满意|</span>
+              <span class="headline">商品：</span>
+              <span><i class="iconfont icon-xingxing "></i>非常满意</span>
+            </div>
+            <div class="item">
+              <span class="text-bulue">阿萨德看了看:</span><span>非常好吃</span>
+            </div>
+            <div class="item">
+              <span class="text-bulue">阿萨德看了看:</span><span>非常好吃</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

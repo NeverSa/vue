@@ -10,6 +10,7 @@ import nearby from './component/Nearby.vue'
 import order from './component/Order.vue'
 import perpersonalcenter from "./component/PersonalCenter.vue"
 import goods from "./component/Goods.vue"
+import login from "./component/Login.vue"
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -21,7 +22,9 @@ const router = new VueRouter({
         {path:'/nearby',component:nearby},
         {path:'/order',component:order},
         {path:'/perpersonalcenter',component:perpersonalcenter},
-        {path:'/goods/:orgid',component:goods}
+        {path:'/goods/:orgid',component:goods},
+        {path:'/login',component:login}
+
     ]
 })
 
