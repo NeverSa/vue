@@ -34,7 +34,7 @@ const vuex_store = new Vuex.Store({
     state:{
         islogin:false,
         neednav:true,
-        IP:"http://47.93.198.244:3000"
+        IP:"http://localhost:3000"
     }
 })
 

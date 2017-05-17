@@ -784,9 +784,24 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
       margin-top: -15px;
       border:5px solid #454547;
       box-shadow: 0 0 10px rgba(0, 17, 17, .5);
+      position: relative;
+      .tag{
+        position: absolute;
+        top: -8px;
+        right: -11px;
+        border-radius: 50%;
+        background:#ff461d;
+        color: @whitetext ;
+      }
       i{
         font-size: 28px !important;
         margin-top: -15px;
+      }
+    }
+    .hascart{
+      background-color: #3190e8;
+      i{
+        color: @whitetext !important;
       }
     }
   }
@@ -794,12 +809,26 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
     flex:1;
     padding-left: 30/@r/@1080;
     line-height:150/@r/@1080 ;
+    color: #999;
+  }
+  .highlighted{
+   color: @whitetext;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .activeoption{
+   background: #07ce3c !important;
+    color: @whitetext !important;
+  }
+  .activecart{
+    color:@bulecolor !important;
   }
   .option{
     width: 235/@r/@1080;
     background: #535356;
     text-align: center;
     line-height:150/@r/@1080 ;
+    color: #999;
   }
 }
 

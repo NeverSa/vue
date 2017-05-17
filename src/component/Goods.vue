@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="navtab">
-      <ul >
+      <ul>
         <li @click="selectactive(0)" :class="{'active':active==0}">商品</li>
         <li @click="selectactive(1)" :class="{'active':active==1}">评价（4.7分）</li>
         <div class="cf"></div>
@@ -61,9 +61,9 @@
                     <span class="now">￥{{food.price}}</span>
                     <span class="fr">
                      <div class="caroption">
-                        <a @click="add(-1)"><i>-</i></a>
-                        <span>22</span>
-                        <a @click="add(1)"><i>+</i></a>
+                        <a @click="add(-1,food.id)"><i>-</i></a>
+                        <span>{{food.conts}}</span>
+                        <a @click="add(1,food.id)"><i>+</i></a>
                     </div>
                     </span>
                   </div>
@@ -155,7 +155,7 @@
         </div>
       </div>
     </div>
-   <Vshopcart ></Vshopcart>
+   <Vshopcart :cartfoods="goods" :upsend="shopdes.shop_uptosend"></Vshopcart>
   </div>
 
 </template>
@@ -178,7 +178,7 @@
         goods: [],
         listHeight: [],
         scrolly: 0,
-        selectfood:[]
+        foods:[],
       };
     },
     created() {
@@ -219,19 +219,22 @@
       }
     },
     methods: {
-      add(cont){
-        if(this.selectfood.length==0){
-          this.selectfood.push()
-        }
-        this.selectfood.forEach(function (item,index) {
-
-        })
-        //for(var i in this.selectfood)
-        alert(cont)
+      add(cont,id){
+          for(var i=0;i<this.goods.length;i++) {
+            for (var j = 0; j < this.goods[i].item.length; j++) {
+              if (id == this.goods[i].item[j].id) {
+                if(this.goods[i].item[j].conts==0&&cont<0){
+                  this.goods[i].item[j].conts=0
+                }else {
+                  this.goods[i].item[j].conts+=cont
+                }
+              }
+            }
+          }
       },
       //获取头部商家信息
       loadshopdes(){
-        this.$http.post("http://localhost:3000/api/shop/getoneshop",{id:this.shopid}).then((res)=>{
+        this.$http.post(this.$store.state.IP+"/api/shop/getoneshop",{id:this.shopid}).then((res)=>{
          this.shopdes=res.body[0]
         })
       },

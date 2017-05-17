@@ -31,7 +31,7 @@ app.post('/api/goods/getlist',function (req, res, next) {
         if(!err){
             let _index=0
             async.map(data,function(item,callback) {
-                let sql = `SELECT dishes_type as type, dishes_name as name,id,dishes_img as img,dishes_price as price FROM sp_dishes where dishes_type=\'${item.dishes_type}\'`
+                let sql = `SELECT dishes_conts as conts, dishes_type as type, dishes_name as name,id,dishes_img as img,dishes_price as price FROM sp_dishes where dishes_type=\'${item.dishes_type}\'`
                 Result.Rows.push(item)
                 db.select(sql, function (err, data) {
                     Result.Rows[_index].item = data
