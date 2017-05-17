@@ -14,6 +14,7 @@
 @buluetext:#00c3b0;
 @bulecolor:#1f93ff;
 @secendcolor:#b8b8b8;
+@topbulue:#0096ff;
 
 
 @titlecolor:#666;
@@ -121,34 +122,32 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
   }
 }
 .topbar{
+   display: flex;
+   height: 180/@r/@1080;
    color: @whitetext;
-   background-color: @green;
-   height:50/@r;
-   line-height: 50/@r;
-   .address{
-     margin-left: 11/@r;
-     .fl;
-     width: 45/@r;
-   }
-   .search{
-     width: 220/@r;
-     .fl;
-     input{
-       height: 25/@r;
-       background-color: @bg;
-       border: 1px solid #fff;
-       border-radius: 5px;
-       width: 100%;
-     }
-   }
-  .option{
-    width: 30/@r;;
-    text-align: right;
-    margin-right: 11/@r;
-    .fl;
-    i{
-      font-size: 46px;
+  padding: 0 50/@r/@1080;
+  justify-content: center;
+  align-items: center;
+  background:@topbulue;
+  .search{
+    height: 100/@r/@1080;
+    width: 100%;
+    input{
+      .center;
+      width: 100%;
+      height: 100%;
+      border:1px solid @whitetext ;
+      border-radius: 30px;
+      color:@secendcolor;
     }
+  }
+
+}
+.activeimg{
+  height: 305/@r/@1080;
+  img{
+    width: 100%;
+    height: 100%;
   }
 }
 .homecontent{
@@ -478,6 +477,9 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
   height: 20/@r/@1080;
   margin-top: -3px;
   vertical-align: top;
+  .iconfont{
+    font-size: 12px;
+  }
   .yellow{
     width: 16px;
     position: absolute;
@@ -832,3 +834,38 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
   }
 }
 
+//商家头部搜素信息
+.orgserch{
+  display: flex;
+  height: 150/@r/@1080;
+  justify-content:space-between;
+   align-items:center;
+  padding: 0 60/@r/@1080;
+  background: @topbulue;
+  color: @whitetext;
+  .centercontent{
+    flex: 1;
+    margin-left: 70/@r/@1080;
+  }
+}
+//商家头部类型导航
+.typenav{
+  background: @topbulue;
+  height: 125/@r/@1080;
+  position: relative;
+  ul{
+    overflow:hidden;
+    position: absolute;
+    width: 100%;
+    white-space:nowrap;
+    transition-property: left;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    li{
+      width: 60px;
+      display: inline-block;
+    }
+  }
+
+}

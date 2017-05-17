@@ -11,6 +11,7 @@ import nearby from './component/Nearby.vue'
 import order from './component/Order.vue'
 import perpersonalcenter from "./component/PersonalCenter.vue"
 import goods from "./component/Goods.vue"
+import orglist from "./component/OrgList.vue"
 //import login from "./component/Login.vue"
 
 Vue.use(Vuex);
@@ -25,6 +26,7 @@ const router = new VueRouter({
         {path:'/order',component:order},
         {path:'/perpersonalcenter',component:perpersonalcenter},
         {path:'/goods/:orgid',component:goods},
+        {path:'/orglist/',component:orglist}
         //{path:'/login',component:login}
 
     ]

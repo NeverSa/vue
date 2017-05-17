@@ -1,6 +1,9 @@
 <template>
     <div>
         <Vtopbar></Vtopbar>
+         <div class="activeimg">
+             <img src="../../static/temp/activeimg.png"/>
+         </div>
         <Vhomecontent></Vhomecontent>
     </div>
 </template>
