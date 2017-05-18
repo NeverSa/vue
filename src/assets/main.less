@@ -853,18 +853,24 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
   background: @topbulue;
   height: 125/@r/@1080;
   position: relative;
+  overflow: hidden;
   ul{
-    overflow:hidden;
     position: absolute;
-    width: 100%;
     white-space:nowrap;
     transition-property: left;
-    transition-duration: 0.5s;
-    transition-timing-function: linear;
-    transition-delay: 0s;
+    margin-top: 10px;
+    height: 90/@r/@1080;
     li{
       width: 60px;
       display: inline-block;
+      height: 90/@r/@1080 ;
+      .center;
+       color: #9fd1ff;
+    }
+    .active{
+      border-bottom: 2px solid @whitetext;
+      color: @whitetext !important;
+      font-weight: 600;
     }
   }
 
