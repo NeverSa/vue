@@ -18,7 +18,7 @@
       <div class="Recommend">
         <div class="title">推荐商家</div>
         <div class="row bor-bot" v-for="item in likedata">
-           <router-link :to="'goods/'+item.shop_id">
+           <router-link :to="'goods/'+item.OrgID">
           <div class="content">
             <div class="row">
               <div class="img">
@@ -26,23 +26,23 @@
               </div>
               <div class="detal">
                 <div class="row">
-                  <span class="tiger">{{item.shop_brand}}</span>
-                  <span class="name">{{item.shop_name}}</span>
+                  <span class="tiger">{{item.OrgBrnd}}</span>
+                  <span class="name">{{item.OrgName}}</span>
                 </div>
                 <div class="row">
                     <Vstars :score="item.shop_score" ></Vstars>
-                    <span class="score">{{item.shop_score}}</span>
+                    <span class="score">{{item.SendPrice}}</span>
                   <span class="copies">月销售500份</span>
-                  <span class="buluetiger fr">{{item.shop_delivery}}</span>
+                  <span class="buluetiger fr">{{item.Distribation}}</span>
                 </div>
                 <div class="row">
-                  <span class="rules">{{item.shop_uptosend}}起送|配送费￥{{item.shop_deliveryprice}}</span>
+                  <span class="rules">{{item.SendPrice}}起送|配送费￥{{item.DeliveryCost}}|{{item.Standard}}/人</span>
                 </div>
               </div>
             </div>
           </div>
            </router-link>
-           <Vactivity :shopid="item.shop_id"></Vactivity>
+           <Vactivity :shopid="item.OrgID"></Vactivity>
 
         </div>
       </div>
@@ -70,6 +70,7 @@
             Loadlikelist:function () {
                 this.$http.post("http://localhost:3000/api/shop/getshoplist").then(function (res) {
                     this.likedata=res.body
+                    console.log(this.likedata)
                 })
             }
         }

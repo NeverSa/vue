@@ -26,12 +26,12 @@ app.post('/api/getfoodlists',function (req, res, next) {
 app.post('/api/goods/getlist',function (req, res, next) {
     let id=req.body.id;
     let Result={"Rows":[]};
-    let sql=`SELECT dishes_type,shop_id FROM sp_dishes where shop_id=${id} group by dishes_type`;
+    let sql=`SELECT SaleType,OrgID FROM shopsale where OrgID=${id} group by SaleType`;
     db.select(sql,function (err,data) {
         if(!err){
             let _index=0
             async.map(data,function(item,callback) {
-                let sql = `SELECT dishes_conts as conts, dishes_type as type, dishes_name as name,id,dishes_img as img,dishes_price as price FROM sp_dishes where dishes_type=\'${item.dishes_type}\'`
+                let sql = `SELECT SaleType as type, SaleName as name,SaleID,Price as price FROM shopsale where SaleType=\'${item.SaleType}\'`
                 Result.Rows.push(item)
                 db.select(sql, function (err, data) {
                     Result.Rows[_index].item = data
@@ -58,7 +58,7 @@ app.post("/api/shop/getoneshop",function(req,res){
 })
 //获取商家信息
 app.post('/api/shop/getshoplist',function (req,res) {
-    var sql="select * from sp_shop"
+    var sql="select * from shoporg"
     db.select(sql,function(err,data){
         if(!err){
             res.end(JSON.stringify(data));

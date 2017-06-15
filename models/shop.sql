@@ -1,121 +1,80 @@
--- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: 2017-05-14 13:21:52
--- 服务器版本： 5.6.17
--- PHP Version: 5.5.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+/*
+SQLyog 企业版 - MySQL GUI v8.14
+MySQL - 5.7.18-log : Database - shop
+*********************************************************************
+*/
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
---
--- Database: `shop`
---
+/*!40101 SET SQL_MODE=''*/;
 
--- --------------------------------------------------------
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`shop` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
---
--- 表的结构 `sp_activity`
---
+USE `shop`;
 
-CREATE TABLE IF NOT EXISTS `sp_activity` (
-  `shop_id` int(10) NOT NULL COMMENT '外键关联字段',
-  `activity_tag` varchar(20) NOT NULL COMMENT '活动类型',
-  `activity_des` varchar(40) NOT NULL COMMENT '活动描述',
-  `activity_type` int(10) NOT NULL COMMENT '对应csstype',
-  KEY `orgid` (`shop_id`),
-  KEY `orgid_2` (`shop_id`),
-  KEY `shop_id` (`shop_id`)
+/*Table structure for table `shopactive` */
+
+DROP TABLE IF EXISTS `shopactive`;
+
+CREATE TABLE `shopactive` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `OrgID` int(10) NOT NULL COMMENT '关联ID',
+  `ActiveDes` varchar(20) DEFAULT NULL COMMENT '活动描述',
+  `ActiveType` varchar(20) DEFAULT NULL COMMENT '活动类型',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- 转存表中的数据 `sp_activity`
---
+/*Data for the table `shopactive` */
 
-INSERT INTO `sp_activity` (`shop_id`, `activity_tag`, `activity_des`, `activity_type`) VALUES
-(1, '新', '新用户满20减10元', 0),
-(1, '减', '满40减10元', 0),
-(1, '特', '新品上市', 0),
-(2, '返', '下单即返3元代金券', 0),
-(2, '特', '黄金单人餐', 0);
+/*Table structure for table `shoporg` */
 
--- --------------------------------------------------------
+DROP TABLE IF EXISTS `shoporg`;
 
---
--- 表的结构 `sp_dishes`
---
+CREATE TABLE `shoporg` (
+  `OrgID` int(10) NOT NULL AUTO_INCREMENT COMMENT '机构ID',
+  `OrgName` varchar(20) NOT NULL COMMENT '机构名称',
+  `Address` varchar(20) DEFAULT NULL COMMENT '长地址',
+  `ShortAddress` varchar(40) DEFAULT NULL COMMENT '短地址',
+  `OrgImg` varchar(40) DEFAULT NULL COMMENT '机构图片',
+  `BusinessHours` varchar(20) DEFAULT NULL COMMENT '营业时间',
+  `OrgNotice` text COMMENT '机构公告',
+  `DeliveryCost` float DEFAULT NULL COMMENT '配送费',
+  `Distribation` char(20) DEFAULT NULL COMMENT '配送方式',
+  `ReachOnTime` int(2) DEFAULT NULL COMMENT '是否准时达',
+  `SendPrice` float DEFAULT NULL COMMENT '起送价',
+  `Standard` float DEFAULT NULL COMMENT '消费标准',
+  `OrgBrnd` varchar(10) DEFAULT NULL COMMENT '机构标签',
+  PRIMARY KEY (`OrgID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE IF NOT EXISTS `sp_dishes` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `dishes_name` varchar(20) NOT NULL COMMENT '菜品名称',
-  `dishes_type` varchar(20) NOT NULL COMMENT '菜品类型',
-  `dishes_img` varchar(20) NOT NULL COMMENT '菜品名称',
-  `shop_id` int(10) NOT NULL COMMENT '所属商家外键关联',
-  `dishes_price` float NOT NULL COMMENT '菜品价格',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+/*Data for the table `shoporg` */
 
---
--- 转存表中的数据 `sp_dishes`
---
+insert  into `shoporg`(`OrgID`,`OrgName`,`Address`,`ShortAddress`,`OrgImg`,`BusinessHours`,`OrgNotice`,`DeliveryCost`,`Distribation`,`ReachOnTime`,`SendPrice`,`Standard`,`OrgBrnd`) values (1,'锡纸诱惑','杭州市余杭区闲林街道53号','阿里巴巴店','3333','9:00/12:00','欢迎光临，用餐高峰期请提前下单谢谢',12,'蜂鸟专送',1,13,14,'品牌');
 
-INSERT INTO `sp_dishes` (`id`, `dishes_name`, `dishes_type`, `dishes_img`, `shop_id`, `dishes_price`) VALUES
-(1, '鱼香肉丝', '热销榜', '', 1, 23),
-(2, '浓香番茄鱼片', '热销榜', '', 1, 59),
-(3, '梅干菜扣肉套餐', '热销榜', '', 1, 28),
-(4, '白米饭', '副食小吃', '', 1, 3),
-(5, '千张包', '副食小吃', '', 1, 4),
-(6, '蜜汁鸡翅', '副食小吃', '', 1, 7),
-(7, '鱼香狮子头套餐', '平衡套餐', '', 1, 22),
-(8, '毛豆辣子鸡套餐', '平衡套餐', '', 1, 26),
-(9, '茶树菇老鸭套餐', '平衡套餐', '', 1, 27);
+/*Table structure for table `shopsale` */
 
--- --------------------------------------------------------
+DROP TABLE IF EXISTS `shopsale`;
 
---
--- 表的结构 `sp_shop`
---
+CREATE TABLE `shopsale` (
+  `SaleID` int(10) NOT NULL AUTO_INCREMENT,
+  `OrgID` int(10) DEFAULT NULL COMMENT '关联外键',
+  `SaleName` varchar(20) DEFAULT NULL COMMENT '菜品名称',
+  `SaleType` varchar(20) DEFAULT NULL COMMENT '菜品类型',
+  `SaleTag` varchar(20) DEFAULT NULL COMMENT '菜品标签',
+  `Price` float DEFAULT NULL COMMENT '价格',
+  PRIMARY KEY (`SaleID`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `sp_shop` (
-  `shop_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '商家id',
-  `shop_name` varchar(50) DEFAULT NULL COMMENT '商家名称',
-  `shop_address` varchar(50) NOT NULL COMMENT '商家地址',
-  `shop_brand` varchar(10) NOT NULL COMMENT '商家标注',
-  `shop_delivery` varchar(50) NOT NULL COMMENT '配送方式',
-  `shop_uptosend` float NOT NULL DEFAULT '0' COMMENT '起送价',
-  `shop_deliveryprice` float NOT NULL DEFAULT '0' COMMENT '配送费',
-  `shop_img` varchar(50) NOT NULL COMMENT '商家图片',
-  `shop_sortaddress` varchar(20) DEFAULT NULL COMMENT '短地址',
-  `shop_score` float NOT NULL DEFAULT '2' COMMENT '评分',
-  PRIMARY KEY (`shop_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+/*Data for the table `shopsale` */
 
---
--- 转存表中的数据 `sp_shop`
---
+insert  into `shopsale`(`SaleID`,`OrgID`,`SaleName`,`SaleType`,`SaleTag`,`Price`) values (1,1,'鱼香肉丝','热销榜',NULL,23),(2,1,'浓香番茄鱼片','热销榜',NULL,25),(3,1,'梅干菜扣肉套餐','热销榜',NULL,11.3),(4,1,'白米饭','副食小吃',NULL,2),(5,1,'千张包','副食小吃',NULL,14),(6,1,'蜜汁鸡翅','副食小吃',NULL,17),(7,1,'鱼香狮子头套餐','平衡套餐',NULL,14),(8,1,'毛豆辣子鸡套餐','平衡套餐',NULL,16),(9,1,'茶树菇老鸭套餐','平衡套餐',NULL,18),(10,1,'茶树菇老鸭套餐','平衡套餐',NULL,11);
 
-INSERT INTO `sp_shop` (`shop_id`, `shop_name`, `shop_address`, `shop_brand`, `shop_delivery`, `shop_uptosend`, `shop_deliveryprice`, `shop_img`, `shop_sortaddress`, `shop_score`) VALUES
-(1, '乐味轩', '杭州市西湖区文一西路', '品牌', '蜂鸟专送', 25, 10, '', NULL, 2),
-(2, '吉祥混度', '杭州市西湖区文二西路', '特权', '蜂鸟专送', 0, 3, 's', '文二西路店', 2);
-
---
--- 限制导出的表
---
-
---
--- 限制表 `sp_activity`
---
-ALTER TABLE `sp_activity`
-  ADD CONSTRAINT `sp_activity_ibfk_1` FOREIGN KEY (`shop_id`) REFERENCES `sp_shop` (`shop_id`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

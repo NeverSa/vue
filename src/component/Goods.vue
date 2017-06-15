@@ -37,7 +37,7 @@
           <li v-for="(item, index) in goods" class="menu-item"  :class="{'current':currentIndex === index}"
               @click="selectMenu(index, $event)">
           <span class="text">
-           {{item.dishes_type}}
+           {{item.SaleType}}
           </span>
           </li>
         </ul>
@@ -45,7 +45,7 @@
       <div class="foods-wrapper" ref="foodWrapper">
         <ul>
           <li v-for="item in goods" class="food-list food-list-hook">
-            <h1 class="title">{{item.dishes_type}}</h1>
+            <h1 class="title">{{item.SaleType}}</h1>
             <ul>
               <li v-for="food in item.item" class="food-item" @click="selectFood(food, $event)">
                 <div class="icon">
@@ -188,6 +188,7 @@
       this._index=1;
       this.$http.post(this.$store.state.IP+"/api/goods/getlist",{id:this.shopid}).then(function (res) {
         this.goods=res.body.Rows;
+        console.log(this.goods)
         this.$nextTick(() => {
           this._initScroll();
           this._calculateHeight();
@@ -277,6 +278,7 @@
         this.$refs.food.show();*/
       },
       incrementTotal(target) {
+
         this.$refs.shopCart.drop(target);
       },
       selectactive(index){
