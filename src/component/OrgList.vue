@@ -5,18 +5,18 @@
             <div class="centercontent">美食</div>
             <div><i class="iconfont icon-meishi"></i></div>
         </div>
-        <div class="typenav">
-            <ul ref="nav" @touchstart="evstart" @touchend="evend"  :style="{ left: -getLeft+'px' }">
-                <li>2</li>
-                <li>qwe</li>
-                <li>qwe</li>
-                <li>qweq</li>
-                <li>asda</li>
-                <li>qweqe</li>
-                <li>qweqe</li>
-                <li>请问</li>
-                <li>阿萨德</li>
-                <li>阿萨切磋德</li>
+        <div class="typenav"  ref="nav">
+            <ul>
+                <li class="active" @click="change(0)">1</li>
+                <li @click="change(1)">2</li>
+                <li @click="change(2)">3</li>
+                <li @click="change(3)">4</li>
+                <li @click="change(4)">5</li>
+                <li @click="change(5)">6</li>
+                <li @click="change(6)">7</li>
+                <li @click="change(7)">8</li>
+                <li @click="change(8)">9</li>
+                <li @click="change(9)">10</li>
             </ul>
         </div>
     </div>
@@ -24,37 +24,42 @@
 </template>
 
 <script type="text/ecmascript-6">
+    import BScroll from 'better-scroll';
     export default {
         name:"orglist",
         data () {
         return {
-            x1:"0",
-            x2:"0",
-            ullength:0
+
         }
     },
     methods:{
-        evstart(e){
-            this.x1= e.touches[0].pageX
+        change(index){
+            let le=10;
+            if(index<3||index>(le-3)){
+                return
+            }else{
+                this.menuScroll.scrollTo(-(index-2)*60, 0,300,"circular")
+            }
+
         },
-        evend(e){
-           this.x2=e.changedTouches[0].pageX
+        _initScroll(){
+            this.menuScroll = new BScroll(this.$refs.nav, {
+                probeType: 3,
+                click: true,
+                scrollX:true,
+                scrollY:false,
+            });
+
+
         }
     },
 
     computed:{
-        getLeft(){
-            let distance=0;
-            distance=this.x1-this.x2;
-            if(Math.abs(distance)>this.ullength&&distance>0){
-                distance=0;
-            }
-            return distance;
-        }
+
     },
     created(){
         this.$nextTick(() => {
-          this.ullength =this.$refs.nav.offsetWidth
+           this._initScroll()
         });
     }
     }
