@@ -31,7 +31,7 @@ app.post('/api/goods/getlist',function (req, res, next) {
         if(!err){
             let _index=0
             async.map(data,function(item,callback) {
-                let sql = `SELECT SaleType as type, SaleName as name,SaleID,Price as price FROM shopsale where SaleType=\'${item.SaleType}\'`
+                let sql = `SELECT SaleType as type, SaleName as name,SaleID,Price as price,conts FROM shopsale where SaleType=\'${item.SaleType}\'`
                 Result.Rows.push(item)
                 db.select(sql, function (err, data) {
                     Result.Rows[_index].item = data
@@ -47,7 +47,7 @@ app.post('/api/goods/getlist',function (req, res, next) {
 //获取单个商家信息
 app.post("/api/shop/getoneshop",function(req,res){
     let id=req.body.id;
-    let sql =`select * from sp_shop where shop_id=${id}.`
+    let sql =`select * from shoporg where OrgID=${id}.`
     db.select(sql,function(err,data){
         if(!err){
             res.send(JSON.stringify(data))
@@ -71,7 +71,7 @@ app.post('/api/shop/getshoplist',function (req,res) {
 //获取商家活动信息
 app.post("/api/shop/getactivity",function(req,res){
     let shopid=req.body.id;
-    let sql=`SELECT activity_tag as tag,activity_des as des FROM sp_activity where shop_id=${shopid}.`;
+    let sql=`SELECT * FROM shopactive where OrgID=${shopid}.`;
     db.select(sql,function(err,data){
         if(!err){
             res.send(JSON.stringify(data))

@@ -61,9 +61,9 @@
                     <span class="now">￥{{food.price}}</span>
                     <span class="fr">
                      <div class="caroption">
-                        <a @click="add(-1,food.id)"><i>-</i></a>
+                        <a @click="add(-1,food.SaleID)"><i>-</i></a>
                         <span>{{food.conts}}</span>
-                        <a @click="add(1,food.id)"><i>+</i></a>
+                        <a @click="add(1,food.SaleID)"><i>+</i></a>
                     </div>
                     </span>
                   </div>
@@ -155,7 +155,7 @@
         </div>
       </div>
     </div>
-   <Vshopcart :cartfoods="goods" :upsend="shopdes.shop_uptosend"></Vshopcart>
+   <Vshopcart :cartfoods="goods" :upsend="shopdes.SendPrice"></Vshopcart>
   </div>
 
 </template>
@@ -223,7 +223,7 @@
       add(cont,id){
           for(var i=0;i<this.goods.length;i++) {
             for (var j = 0; j < this.goods[i].item.length; j++) {
-              if (id == this.goods[i].item[j].id) {
+              if (id == this.goods[i].item[j].SaleID) {
                 if(this.goods[i].item[j].conts==0&&cont<0){
                   this.goods[i].item[j].conts=0
                 }else {

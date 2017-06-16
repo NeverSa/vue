@@ -36,9 +36,11 @@
   display: inline-block;
   width: 45/@r/@1080;
   height:45/@r/@1080;
+  line-height: 45/@r/@1080;
   background-color:@tagcolor1 ;
   color: @whitetext;
   margin-right: 10px;
+  border-radius: 2px;
 }
 .tag1{
   background-color:@tagcolor1 ;
@@ -502,6 +504,7 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
   padding:20/@r/@1080  0 20/@r/@1080 240/@r/@1080;
   .list{
     width:600/@r/@1080 ;
+    margin-top: 20/@r/@1080;
   }
 }
 
@@ -794,6 +797,7 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
         border-radius: 50%;
         background:#ff461d;
         color: @whitetext ;
+
       }
       i{
         font-size: 28px !important;
@@ -874,4 +878,16 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
     }
   }
 
+}
+/*二级页面*/
+.secendpadge{
+  display: flex;
+  background:@bulecolor;
+  color: @whitetext;
+  .topbar{
+    display: flex;
+    .rightbar{
+      align-self: flex-end;
+    }
+  }
 }

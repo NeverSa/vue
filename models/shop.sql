@@ -27,9 +27,11 @@ CREATE TABLE `shopactive` (
   `ActiveDes` varchar(20) DEFAULT NULL COMMENT '活动描述',
   `ActiveType` varchar(20) DEFAULT NULL COMMENT '活动类型',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `shopactive` */
+
+insert  into `shopactive`(`id`,`OrgID`,`ActiveDes`,`ActiveType`) values (1,1,'新用户下单立减17.0元','新'),(2,1,'满15减4，满25减7，满65减20','减'),(3,1,'5折！夏季爆款，限时抢','折'),(4,1,'半折优惠','折');
 
 /*Table structure for table `shoporg` */
 

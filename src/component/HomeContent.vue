@@ -2,7 +2,7 @@
     <div class="homecontent">
         <div >
             <ul>
-                <li><a><i class=" iconfont icon-meishi ionic_1"></i><br/>美食</a></li>
+                <li><router-link :to="secondpage/1"><i class=" iconfont icon-meishi ionic_1"></i><br/>美食</router-link></li>
                 <li><a><i class="iconfont icon-tehui ionic_2"></i><br/>甜品饮品</a></li>
                 <li><a><i class="iconfont icon-market ionic_3"></i><br/>超商便利</a></li>
                 <li><a><i class="iconfont icon-cantingyuding ionic_4"></i><br/>预定早餐</a></li>
