@@ -881,13 +881,24 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
 }
 /*二级页面*/
 .secendpadge{
-  display: flex;
   background:@bulecolor;
+  padding: 20px;
   color: @whitetext;
-  .topbar{
-    display: flex;
-    .rightbar{
-      align-self: flex-end;
+  .seacherbar{
+     display: flex;
+    justify-content: space-between;
+   .center-option{
+     flex: 1;
+     text-align: left;
+     margin-left: 5px;
+   }
+  }
+  .typeul{
+    color: #000000;
+    width: 100%;
+    div{
+     display: inline-block;
+      white-space :nowrap;
     }
   }
 }

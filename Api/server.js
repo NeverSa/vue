@@ -80,7 +80,30 @@ app.post("/api/shop/getactivity",function(req,res){
     })
 
 })
-
+//根据orgid获取大类和小类
+app.post("/api/shop/getOrgType",function (req,res) {
+    let type=req.body.type
+    let sql=`SELECT * FROM shoporgtype WHERE  BigClass=${type}`;
+    db.select(sql,function (err,data) {
+        if(!err){
+            res.send(JSON.stringify(data))
+        }
+    })
+})
+//根据大类和小类获取机构列表
+app.post("/api/shop/getOrgTypeByType",function (req,res) {
+    let smalltype=req.body.smalltype;
+    let bigtype=req.body.bigtype;
+    console.log(smalltype)
+    let sql=`SELECT * FROM shoporg WHERE  BigClass=${bigtype} AND SmallClass=${smalltype}`;
+    console.log(sql)
+    db.select(sql,function (err,data) {
+        console.log(data)
+        if(!err){
+            res.send(JSON.stringify(data))
+        }
+    })
+})
 //登录接口
 app.post("/api/user/login",function(req,res){
     let username=req.body.username;

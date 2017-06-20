@@ -2,7 +2,7 @@
     <div class="homecontent">
         <div >
             <ul>
-                <li><router-link :to="secondpage/1"><i class=" iconfont icon-meishi ionic_1"></i><br/>美食</router-link></li>
+                <li><router-link :to="'orglist/'+1"><i class=" iconfont icon-meishi ionic_1"></i><br/>美食</router-link></li>
                 <li><a><i class="iconfont icon-tehui ionic_2"></i><br/>甜品饮品</a></li>
                 <li><a><i class="iconfont icon-market ionic_3"></i><br/>超商便利</a></li>
                 <li><a><i class="iconfont icon-cantingyuding ionic_4"></i><br/>预定早餐</a></li>
@@ -68,7 +68,7 @@
         },
         methods: {
             Loadlikelist:function () {
-                this.$http.post("http://localhost:3000/api/shop/getshoplist").then(function (res) {
+                this.$http.post(this.$store.state.IP+"/api/shop/getshoplist").then(function (res) {
                     this.likedata=res.body
                     console.log(this.likedata)
                 })

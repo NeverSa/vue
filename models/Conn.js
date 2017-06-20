@@ -18,7 +18,7 @@ SelectModel.select = function(selectSql,callback){
 
   connection.query(selectSql,function(err,res){
     if(err){
-
+    console.log(err)
       return ;
     }
 

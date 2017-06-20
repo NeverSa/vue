@@ -12,8 +12,6 @@ import order from './component/Order.vue'
 import perpersonalcenter from "./component/PersonalCenter.vue"
 import goods from "./component/Goods.vue"
 import orglist from "./component/OrgList.vue"
- import secondpage from "./component/SecondPage.vue"
-//import login from "./component/Login.vue"
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
@@ -27,9 +25,7 @@ const router = new VueRouter({
         {path:'/order',component:order},
         {path:'/perpersonalcenter',component:perpersonalcenter},
         {path:'/goods/:orgid',component:goods},
-        {path:'/orglist/',component:orglist},
-        {path:'/secondpage/:bigclass',component:secondpage}
-        //{path:'/login',component:login}
+        {path:'/orglist/:type',component:orglist},
 
     ]
 })
