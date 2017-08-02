@@ -10,6 +10,5 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
         .state('404', {
             url: '/404',
             templateUrl:"src/View/404.html",
-
         })
 })

@@ -1,6 +1,6 @@
-html { font-family: "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;  }
+html { font-family: "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; height: 100% }
 body { margin: 0;  line-height: 1.5; color: #333333; background-color: white; height: 100%; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
-
+#app{  height:100%;}
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary { display: block; }
 audio, canvas, progress, video { display: inline-block; vertical-align: baseline; }
 audio:not([controls]) { display: none; height: 0; }

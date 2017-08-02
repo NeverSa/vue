@@ -1,19 +1,30 @@
 <template>
-    <div>
-        <Vtopbar></Vtopbar>
-         <div class="activeimg">
-             <img src="../../static/temp/activeimg.png"/>
-         </div>
-        <Vhomecontent></Vhomecontent>
+    <div style="height:100%;">
+        <view-box ref="viewBox">
+            <router-view></router-view>
+            asdad
+            <tabbar slot="bottom">
+                <tabbar-item link="/orderindex">
+                    <span slot="label" style="color:#dd2727">网上订购</span>
+                </tabbar-item>
+                <tabbar-item link="/sort">
+                    <span slot="label">智慧餐厅</span>
+                </tabbar-item>
+                <tabbar-item link="/car">
+                    <span slot="label">我的</span>
+                </tabbar-item>
+
+            </tabbar>
+        </view-box>
+
     </div>
 </template>
 
 <script type="text/ecmascript-6">
-    import Vtopbar from "./TopBar.vue"
-    import Vhomecontent from "./HomeContent.vue"
+    import { ViewBox,Tabbar, TabbarItem  } from 'vux'
     export default {
-        name:"home",
-        components:{Vtopbar:Vtopbar,Vhomecontent:Vhomecontent},
+
+        components:{ViewBox,Tabbar, TabbarItem},
         data () {
             return {}
         },

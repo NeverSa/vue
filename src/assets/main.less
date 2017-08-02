@@ -307,6 +307,23 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
   }
 }
 
+.personal-trisection{
+  display: flex;
+  a{
+    width: 100%;
+    flex-grow: 1;
+    text-align: center;
+    border-right: 1px solid @bordercolor;
+    height: 240/@r/@1080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  a:last-child{
+    border-right: none;
+  }
+}
 //单独标题
 .defaulttitle{
   clear: both;
@@ -315,6 +332,7 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
    height: 36/@r;
   line-height: 36/@r;
   .title{
+    i{margin-right: 15px}
     .fl
   }
   .option{
@@ -339,13 +357,36 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
 }
 
 .personaltop{
-  height: 110/@r;
-  background-color:@buluetext ;
-  img{
-    width: 40/@r;height:40/@r;border-radius: 50%;
+  background-color:@bulecolor ;
+  color: @whitetext;
+   padding: 60/@r/@1080 50/@r/@1080;
+  .personal-nav{
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    .left{
+      width: 80%;
+    }
   }
-  span{ display: inline-block;
-    height:40/@r;}
+  .user-warper{
+    display: flex;
+    margin-top: 80/@r/@1080;
+
+     .user-warperdes{
+       margin-left: 50/@r/@1080;
+     }
+    .goionic{
+      display: flex;
+      align-items: center;
+      flex:1;
+      justify-content: flex-end;
+    }
+    img{
+      width: 40/@r;height:40/@r;border-radius: 50%;
+    }
+  }
+
+
 }
 
 .goodtop{
@@ -735,34 +776,54 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
 }
 
 //登录页
-.login{
+.login-waiper{
   display: flex;
-  flex-direction: column;
   justify-content: center;
- .item{
-   margin: 30/@r/@1080;
-   .center;
-   input,button{
-     font-size: 12px;
-     width: 500/@r/@1080;
-     padding: 12/@r/@1080;
-     height: 80/@r/@1080;
-     line-height: 80/@r/@1080;
-     color: #333;
-     border: 1px solid #dadada;
-   }
-   a{
-     background: #32a5e7;
-     color: #fff;
-     display: inline-block; font-size: 12px;
-     width: 500/@r/@1080;
-     padding: 12/@r/@1080;
-     height: 80/@r/@1080;
-     line-height: 80/@r/@1080;
-   }
- }
-}
+  align-items: flex-end;
+  text-align: center;
+  background: url("./images/login-bg.png") no-repeat;
+  background-size:contain;
+  width: 640/@r;
+  height: 730/@r;
+  .login-form{
+    background: #fff;
+    width: 90%;
+    border-radius: 2px;
+    box-shadow: 0 0 3px rgba(0,0,0,.45);
+    padding-bottom: 45/@r;
+    .bindingdiv{
+      margin-bottom: -70/@r;
+    }
+    .item{
+      margin:20/@r;
+      border-bottom: 1px solid #ededed;
+      padding: 20/@r;
+      display: flex;
+    }
 
+    label{
+      width: 60/@r   ;
+    }
+    input{
+      flex: 1;
+      border:none;
+      font-size: 16px;
+    }
+  }
+  .loginbuttom{
+    display: inline-block;
+    height: 80/@r;
+    width: 320/@r;
+    color: #fff;
+    text-align: center;
+    border-radius: 30/@r;
+    background-color: #5cd3b5;
+    line-height: 80/@r;
+    box-shadow: 0 0 3px rgba(0,0,0,.45);
+    background-image: linear-gradient(to left, #00a685, #76d588);
+    vertical-align: middle;
+  }
+}
 //购物车
 .shopcart{
   display: flex;
@@ -900,5 +961,35 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
      display: inline-block;
       white-space :nowrap;
     }
+  }
+}
+/*登录*/
+.login-title{
+  display:flex;
+  background-color: @bulecolor;
+  color: @whitetext;
+  padding:60/@r/@1080 30/@r/@1080;
+}
+.login-content{
+  margin-top: 40/@r/@1080;
+  display: flex;
+  flex-direction: column;
+  input{
+    background: @whitetext !important;
+    padding: 20/@r/@1080;
+    border:none;
+    width: 100%;
+    height: 80/@r/@1080;
+    line-height: 80/@r/@1080;
+  }
+  .submit{
+    background: @greentext;
+    color: @whitetext;
+    text-align: center;
+    margin: 20/@r/@1080;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 20/@r/@1080 0;
+    border: none;
   }
 }

@@ -2,33 +2,30 @@
  * Created by zongchaoyang on 2017/4/25.
  */
 import Vue from 'vue'
-import VueResource from 'vue-resource'
 import Vuex from "vuex"
-import VueRouter from 'vue-router'
+import router from './router'
 import App from './App.vue'
-import home from './component/Home.vue'
-import nearby from './component/Nearby.vue'
-import order from './component/Order.vue'
-import perpersonalcenter from "./component/PersonalCenter.vue"
-import goods from "./component/Goods.vue"
-import orglist from "./component/OrgList.vue"
+import axios from  "axios"
+import flexible from "./assets/js/flexible.js"
 
+Vue.config.productionTip = false
+
+
+import  { ToastPlugin ,AjaxPlugin} from 'vux'
+Vue.use(ToastPlugin)
 Vue.use(Vuex);
-Vue.use(VueRouter);
-Vue.use(VueResource);
 
-const router = new VueRouter({
-    routes: [
-        {path: '/', component: home},
-        {path: '/home', component: home},
-        {path:'/nearby',component:nearby},
-        {path:'/order',component:order},
-        {path:'/perpersonalcenter',component:perpersonalcenter},
-        {path:'/goods/:orgid',component:goods},
-        {path:'/orglist/:type',component:orglist},
+Vue.prototype.msg=function (msg) {
+    return Vue.$vux.toast.show({
+        type:"text",
+        text: msg,
+        position:"bottom",
+        width:"8rem"
+    })
+}
 
-    ]
-})
+
+
 
 const vuex_store = new Vuex.Store({
     state:{
@@ -40,8 +37,8 @@ const vuex_store = new Vuex.Store({
 
 new Vue({
     el: '#app',
-    router: router,
+    router,
     store:vuex_store,
-    render: h => h(App)
+    template: '<App/>',
+    components: { App }
 })
-

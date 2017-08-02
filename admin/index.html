@@ -5,7 +5,22 @@
     <title>Title</title>
 </head>
 <body>
-<div ui-view=""></div>
+<div class="wrapper ">
+    <header ng-include="'src/View/top-navbar.html'" class="topnavbar-wrapper"></header>
+
+    <aside ng-include="'src/View/left-nav.html'" class="aside"></aside>
+
+    <div ui-view=""></div>
+</div>
+
+
 <script type="text/javascript" src="dist/build.js"></script>
+
+<style>
+    @import "static/css/app.css";
+    @import "static/css/bootstrap.css";
+    @import "static/css/theme-b.css";
+    @import "static/css/ionic.css";
+</style>
 </body>
 </html>
