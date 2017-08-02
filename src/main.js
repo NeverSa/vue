@@ -29,8 +29,6 @@ Vue.prototype.msg=function (msg) {
 
 const vuex_store = new Vuex.Store({
     state:{
-        islogin:false,
-        neednav:true,
         IP:"http://localhost:3000"
     }
 })
