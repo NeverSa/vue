@@ -8,6 +8,7 @@ import App from './App.vue'
 import axios from  "axios"
 import flexible from "./assets/js/flexible.js"
 
+Vue.prototype.$http=axios;
 Vue.config.productionTip = false
 
 
@@ -23,9 +24,6 @@ Vue.prototype.msg=function (msg) {
         width:"8rem"
     })
 }
-
-
-
 
 const vuex_store = new Vuex.Store({
     state:{

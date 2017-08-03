@@ -4,7 +4,6 @@ var router = express.Router();
 var { sequelize } = require("../config/db");
 var User = sequelize.import("../models/user");
 
-
 /**
  * 登录功能
  * @name
