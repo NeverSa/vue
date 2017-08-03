@@ -20,6 +20,6 @@ node www.js
 # 首次数据库配置
 数据库配置文件api/config/db.js，请先手动创建数据库，
 第一次执行时将api/models/ref.js文件中的sequelize.sync({ force: false })
-改为sequelize.sync({ force: true })会自动同步数据表
+改为sequelize.sync({ force: true })会自动同步数据表。
 
 
