@@ -14,11 +14,6 @@ module.exports = function(sequelize, DataTypes) {
         OrgID: {
             type: DataTypes.STRING,
             allowNull: false,
-            field:"org_id",
-            references: { //引用org模型里的OrgID属性
-                model: "org",
-                key: "OrgId"
-            }
         },
         ActiveDes: {
             type: DataTypes.STRING,

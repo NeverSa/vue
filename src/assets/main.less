@@ -451,7 +451,6 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
 .Recommend{
   border-bottom: 1/@r/@1080 solid @bordercolor ;
   :last-child{border-bottom:none ;}
-  padding: 0 0 30/@r/@1080 0;
   .title{
     padding-left: 30/@r/@1080 ;
     height: 102/@r/@1080;
@@ -472,10 +471,11 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
       }
     }
     .detal{
+      line-height: 22px;
+      font-size: 13px;
       height: 180/@r/@1080;
       width:750/@r/@1080;
       .fl;
-      border-bottom: 1/@r/@1080 dashed @bordercolor;
       padding-bottom: 45@r/ @1080;
       .tiger{
         vertical-align: top;
@@ -544,12 +544,13 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
   }
 }
 //商家活动组件
-.activity{
-  padding:20/@r/@1080  0 20/@r/@1080 240/@r/@1080;
-  .list{
-    width:600/@r/@1080 ;
-    margin-top: 20/@r/@1080;
-  }
+.activitylist{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin:0 30/@rem 0 250/@rem;
+  padding:20/@rem 0;
+  border-top:1px dashed #c3c3c3;
 }
 
 

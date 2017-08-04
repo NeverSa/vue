@@ -28,5 +28,19 @@ export default new Router({
       ]
     },
 
+    {
+      path: '/foodlist/:id',
+      name: 'foodlist',
+      component (resolve) {
+        require.ensure(['../component/FoodList'], () => {
+          resolve(require('../component/FoodList'));
+        });
+      }
+    },
+    {
+      path: '/',
+      redirect: { name: 'takeout' },
+
+    }
   ]
 })

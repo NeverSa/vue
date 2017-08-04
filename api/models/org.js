@@ -4,12 +4,6 @@
 var uuid = require('node-uuid');
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define("org", {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false, //非空
-            autoIncrement: true, //自动递增
-            primaryKey: true, //主键
-        },
         OrgId: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -18,6 +12,11 @@ module.exports = function(sequelize, DataTypes) {
         OrgName: {
             type: DataTypes.STRING,
 
+        },
+        OrgBrand:{
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
+            comment:"机构标签是否为品牌"
         },
         Address: {
             type: DataTypes.STRING,
@@ -38,14 +37,16 @@ module.exports = function(sequelize, DataTypes) {
         },
         DeliveryCost: {
             type: DataTypes.FLOAT,
-            comment:"配送费"
+            comment:"配送费",
+            defaultValue: 0.00,
         },
         Distribation: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             comment:"配送方式"
         },
         ReachOnTime: {
-            type: DataTypes.BLOB,
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
             comment:"是否准时达"
         },
         SendPrice: {

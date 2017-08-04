@@ -27,7 +27,7 @@ Vue.prototype.msg=function (msg) {
 
 const vuex_store = new Vuex.Store({
     state:{
-        IP:"http://localhost:3000"
+        IP:"http://192.168.6.144:3000"
     }
 })
 

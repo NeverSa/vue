@@ -18,31 +18,31 @@
         <div class="Recommend">
             <div class="title">推荐商家</div>
             <div class="row bor-bot"    v-for="item in list">
-                <router-link to="/ss">
+                <router-link :to="{ name: 'foodlist', params: { id: item.OrgId }}">
                     <div class="content">
-                        <div class="row">
+                        <div class="row" style="padding-bottom: 10px;">
                             <div class="img">
                                 <img src="../../static/temp/4.jpg"/>
                             </div>
                             <div class="detal">
                                 <div class="row">
-                                    <span class="tiger"></span>
-                                    <span class="name"></span>
+                                    <span class="tiger">品牌</span>
+                                    <span class="name">{{item.OrgName}}  {{item.ShortAddress}}</span>
                                 </div>
                                 <div class="row">
-                                <!--    <Vstars :score="item.shop_score" ></Vstars>-->
-                                    <span class="score"></span>
+
+                                    <rater  :value="3.5" disabled :max="5"	active-color="#ffc600" :margin="1" :font-size="16"></rater>3.5
                                     <span class="copies">月销售500份</span>
-                                    <span class="buluetiger fr"></span>
+                                    <span class="buluetiger fr" v-if="item.Distribation">{{item.Distribation}}</span>
                                 </div>
                                 <div class="row">
-                                    <span class="rules">人</span>
+                                    <span class="rules">￥{{item.SendPrice}}起送<span > | 配送费￥</span></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </router-link>
-              <!--  <Vactivity :shopid="item.OrgID"></Vactivity>-->
+                <Vactivity :shopid="item.OrgId"></Vactivity>
             </div>
         </div>
 
@@ -51,13 +51,14 @@
 </template>
 
 <script>
-    import Vstars from "./Stars.vue"
     import Vactivity from "./Activity.vue"
+    import { Rater } from 'vux'
     export default {
-        components:{Vstars,Vactivity},
+        components:{Vactivity,Rater},
         data () {
             return {
                 list:[],
+
             }
         },
         created(){
@@ -65,14 +66,14 @@
         },
         methods: {
             loadedata () {
-                this.$http.post(this.$store.state.IP+"/api/goods/getalllist").then((res)=>{
-                   console.log(res)
-                    this.list=res.data
-               })
+                this.$http.post(this.$store.state.IP + "/api/goods/getalllist").then((res)=> {
+                    this.list = res.data
+                })
             },
         }
 
     }
+
 </script>
 <style>
 
