@@ -1010,3 +1010,52 @@ display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibilit
     text-align: center;
   }
 }
+
+/*
+菜品列表
+*/
+.default-header{
+  background-image: url("./images/boli.png");
+  position: relative;
+  padding: 30/@rem 60/@rem;
+  z-index: 2;
+  color: #fff;
+  .herder-content{
+    transition:all 1s ease;
+    height:80px;
+  }
+  .herder-active{
+    height: 0px;
+    div{
+      opacity: 0;
+    }
+    img{
+      width: 0px;
+      height: 0px;
+    }
+  }
+  .item{
+    div{
+      margin: 5px
+    }
+    .tiger{
+      vertical-align: top;
+      padding:0px 10px;
+      height: 45/@r/@1080;
+      line-height:45/@r/@1080;
+      border-radius:3/@r/@1080;
+      display: inline-block;
+      background-color:@tigercolor ;
+      color:@tigertextcolor;
+    }
+
+  }
+}
+.foodWrapper{
+  .left-meun{
+
+  }
+  .right-content{
+
+  }
+}

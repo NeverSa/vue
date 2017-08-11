@@ -27,9 +27,7 @@
     methods:{
      _inti(){
             this.$http.post(this.$store.state.IP+"/api/goods/getactivity",{"id":this.shopid}).then((res)=>{
-
                 this.activity=res.data
-
             })
         },
         tager(){

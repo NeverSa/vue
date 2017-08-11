@@ -11,10 +11,6 @@ module.exports = function(sequelize, DataTypes) {
             autoIncrement: true, //自动递增
             primaryKey: true, //主键
         },
-        OrgID: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         ActiveDes: {
             type: DataTypes.STRING,
             comment:"营业时间"

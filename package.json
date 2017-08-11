@@ -10,7 +10,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "async": "^2.4.0",
+    "async": "^2.5.0",
     "axios": "^0.16.2",
     "better-scroll": "^0.1.15",
     "body-parser": "^1.17.1",
